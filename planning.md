@@ -9,116 +9,85 @@
 
 ## Domain
 
-<!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
+Study abroad resources for HBCU students and Black travelers, with a focus on funding, destination selection, safety, and the lived experience of traveling while Black.
 
-<!-- Only about 6% of Black college students study abroad — a fraction that reflects real barriers like financial strain, lack of institutional support, and the emotional weight of navigating foreign spaces as a Black person. Most existing resources are buried in university websites or written for a general audience that doesn't account for the HBCU experience. This guide exists to put everything in one place, in language that actually speaks to you. -->
+This knowledge is valuable because the best guidance is split across university pages, scholarship sites, academic research, and personal travel stories. A lot of official study abroad material is written for a generic student audience and does not address concerns that matter to HBCU students, such as affordability, hair and skin care, racism abroad, and finding Black-friendly support systems.
 
 ---
 
 ## Documents
 
-<!-- List your specific sources: URLs, subreddit names, forum threads, or file descriptions.
-     Aim for at least 10 sources that together cover different subtopics or perspectives within your domain. -->
-
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | HBCU Lifestyle: Study Abroad Resources | Article | https://hbculifestyle.com/study-abroad-hbcu-resources/ |
+| 2 | Gilman International Scholarship Program | Official Program | https://www.gilmanscholarship.org/ |
+| 3 | "If Not Us Then Who?" - Megan Covington | Academic Paper | https://independent.academia.edu/MeganCovington |
+| 4 | The HBCU Career Center: Study Abroad | Career Resource | https://www.thehbcucareercenter.com/college-student-career-planning/study-abroad/ |
+| 5 | Green Book Global: Ultimate Guide to Black Travel | Guide / Tool | https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/ |
+| 6 | Melanin Base Camp: Hair & Skin Care Abroad | Blog / Personal | https://www.melaninbasecamp.com/trip-reports/2024/10/20/traveling-while-black-how-i-care-for-my-hair-and-skin-while-abroad |
+| 7 | Joy Worldwide: Best Study Abroad Destinations for HBCU Students | Article | https://www.joyworldwideinc.com/blog/the-best-study-abroad-destinations-for-hbcu-students |
+| 8 | Northwestern: Black History Month Global Week | University Resource | https://www.northwestern.edu/abroad/events/black-history-month |
+| 9 | USC Dissertation: Black Students and Career Readiness Abroad (2023) | Dissertation | https://scholarcommons.sc.edu/etd/7274 |
+| 10 | TikTok: #GilmanScholarship + #HBCU Study Abroad | Social / Short Video | https://www.tiktok.com/discover/gilman-scholarship-essay-tips |
 
 ---
 
 ## Chunking Strategy
 
-<!-- How will you split documents into chunks?
-     State your chunk size (in tokens or characters), overlap size, and explain why those
-     numbers fit the structure of your documents.
-     A review-heavy corpus warrants different chunking than a long FAQ. -->
+**Chunk size:** 1000 characters
 
-**Chunk size:**
+**Overlap:** 150 characters
 
-**Overlap:**
-
-**Reasoning:**
+**Reasoning:** Most of the corpus is made up of short articles, list-heavy guides, and resource pages with clear headings. A 1000-character chunk usually keeps one topic together without swallowing unrelated navigation text, while 150 characters of overlap helps preserve context when a scholarship detail, safety tip, or destination recommendation crosses a boundary. Before chunking, I will strip nav/footer boilerplate, normalize whitespace, and keep headings and bullet lists intact when possible.
 
 ---
 
 ## Retrieval Approach
 
-<!-- Which embedding model are you using (e.g., all-MiniLM-L6-v2 via sentence-transformers)?
-     How many chunks will you retrieve per query (top-k)?
-     If you were deploying this for real users and cost wasn't a constraint, what tradeoffs
-     would you weigh in choosing a different embedding model — context length, multilingual
-     support, accuracy on domain-specific text, latency? -->
+**Embedding model:** sentence-transformers/all-MiniLM-L6-v2
 
-**Embedding model:**
+**Top-k:** 4
 
-**Top-k:**
-
-**Production tradeoff reflection:**
+**Production tradeoff reflection:** If cost were not a constraint, I would use a larger embedding model with stronger semantic recall and better handling of long-form and domain-specific language, then add a reranker on top. That would likely improve matches for academic writing, travel-safety language, and Black travel experience terms, but it would also increase latency, memory use, and operational complexity compared with a lightweight local model.
 
 ---
 
 ## Evaluation Plan
 
-<!-- List your 5 test questions with their expected correct answers.
-     Questions should be specific enough that you can judge whether the system's response
-     is right or wrong. "What are good dining halls?" is too vague.
-     "What do students say about wait times at [dining hall name] during lunch?" is testable. -->
-
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 1 | According to the Gilman program website, what is the full program name and which U.S. government office funds it? | Benjamin A. Gilman International Scholarship Program; funded by the U.S. Department of State's Bureau of Educational and Cultural Affairs. |
+| 2 | Which specific HBCUs are explicitly listed on the HBCU Lifestyle page as having established international exchange programs? (List the institutions named.) | Howard University; Morehouse College; Spelman College. |
+| 3 | List two concrete safety recommendations given by The HBCU Career Center's "Stay Safe Abroad" guidance. (Provide the exact practices.) | Examples: "Be alert"; "Make and secure copies of your important papers." |
+| 4 | What filtering criteria does Green Book Global's destination tool provide? (Name at least two criteria used by the tool.) | Examples: "travelingWhileBlackScore"/threat-of-racism metric and filters for affordability, adventure, romance, and local-food scores. |
+| 5 | According to the Melanin Base Camp article, name two recommended hair or skin care strategies travelers should prepare before departure. | Examples: protective styles (e.g., knotless braids) and packing moisturizers/oils and non-whitening sunscreen. |
 
 ---
 
 ## Anticipated Challenges
 
-<!-- What could go wrong? Name at least two specific risks with reasoning.
-     Consider: noisy or inconsistent documents, missing source attribution, off-topic
-     retrieval, chunks that split key information across boundaries. -->
+1. Some sources are long, promotional, or navigation-heavy, so retrieval can surface boilerplate or related links instead of the actual guidance the user needs.
 
-1.
-
-2.
+2. Important details are often split across headings, bullet lists, or narrative sections, which means too-small chunks or too-low top-k could miss the exact scholarship, safety, or destination answer.
 
 ---
 
 ## Architecture
 
-<!-- Draw a diagram of your pipeline showing the five stages:
-     Document Ingestion → Chunking → Embedding + Vector Store → Retrieval → Generation
-     Label each stage with the tool or library you're using.
-     You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
-     You'll use this diagram as context when prompting AI tools to implement each stage. -->
+```mermaid
+flowchart LR
+     A[Document Ingestion<br/>requests + BeautifulSoup + pdfplumber] --> B[Chunking<br/>custom text splitter]
+     B --> C[Embedding + Vector Store<br/>sentence-transformers + ChromaDB]
+     C --> D[Retrieval<br/>Chroma similarity search, top-k = 4]
+     D --> E[Generation<br/>Groq chat model + grounded prompt]
+```
 
 ---
 
 ## AI Tool Plan
 
-<!-- For each part of the pipeline below, describe:
-     - Which AI tool you plan to use (Claude, Copilot, ChatGPT, etc.)
-     - What you'll give it as input (which sections of this planning.md, which requirements)
-     - What you expect it to produce
-     - How you'll verify the output matches your spec
+**Milestone 3 - Ingestion and chunking:** I will use Copilot with the Domain, Documents, and Chunking Strategy sections from this plan plus the requirements file. I expect it to produce the document loader, HTML/text cleaning, and chunking code. I will verify that it removes boilerplate, keeps source metadata, and produces chunks near the target size without splitting obvious headings mid-thought.
 
-     "I'll use AI to help me code" is not a plan.
-     "I'll give Claude my Chunking Strategy section and ask it to implement chunk_text()
-     with my specified chunk size and overlap" is a plan. -->
+**Milestone 4 - Embedding and retrieval:** I will use Copilot or Claude with the Retrieval Approach section and the evaluation questions. I expect it to wire up sentence-transformers and ChromaDB, persist embeddings, and return the best matching chunks for a query. I will verify retrieval by running the five test questions and checking that the top chunks actually support the answer.
 
-**Milestone 3 — Ingestion and chunking:**
-
-**Milestone 4 — Embedding and retrieval:**
-
-**Milestone 5 — Generation and interface:**
+**Milestone 5 - Generation and interface:** I will use Copilot with the Architecture, Retrieval Approach, and document source list to build the Groq-backed answer generation and the query interface. I expect it to produce a response layer that cites sources, stays within retrieved evidence, and a simple UI for asking questions. I will verify that the system refuses or hedges when retrieval does not support an answer and that the cited sources match the retrieved chunks.
