@@ -10,7 +10,11 @@
 ## Domain
 
 <!-- What topic or category of knowledge does your system cover?
+My project will be a Stdy Abroad Preparation Guide.
      Why is this knowledge valuable, and why is it hard to find through official channels?
+
+This knowledge is very valuable because a lot of colleges don't have resources currently set up to best prepare students for this opportunity. 
+
      Example: "Student reviews of CS professors at [university] — useful because official
      course descriptions don't reflect teaching style, exam difficulty, or workload." -->
 
@@ -24,16 +28,16 @@
 
 | # | Source | Type | URL or file path |
 |---|--------|------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | HBCU Lifestyle: Study Abroad Resources | Article | https://hbculifestyle.com/study-abroad-hbculifestyle-resources/ |
+| 2 | Gilman International Scholarship Program | Official Program | https://www.gilmanscholarship.org/ |
+| 3 | "If Not Us Then Who?" — Megan Covington | Academic Paper | https://independent.academia.edu/MeganCovington |
+| 4 | The HBCU Career Center: Study Abroad | Career Resource | https://www.thehbcucareercenter.com/college-student-career-planning/study-abroad/ |
+| 5 | Green Book Global: Ultimate Guide to Black Travel | Guide / Tool | https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/ |
+| 6 | Melanin Base Camp: Hair & Skin Care Abroad | Blog / Personal | https://www.melaninbasecamp.com/trip-reports/2024/10/20/traveling-while-black-how-i-care-for-my-hair-and-skin-while-abroad |
+| 7 | Joy Worldwide: Best Study Abroad Destinations for HBCU Students | Article | https://www.joyworldwideinc.com/blog/the-best-study-abroad-destinations-for-hbcu-students |
+| 8 | Northwestern: Black History Month Global Week | University Resource | https://www.northwestern.edu/abroad/events/black-history-month |
+| 9 | USC Dissertation: Black Students & Career Readiness Abroad (2023) | Dissertation | https://scholarcommons.sc.edu/etd/7274 |
+| 10 | TikTok: #GilmanScholarship + #HBCU Study Abroad | Social / Short Video | https://www.tiktok.com/discover/gilman-scholarship-essay-tips |
 
 ---
 

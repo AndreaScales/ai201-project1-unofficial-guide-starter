@@ -11,6 +11,8 @@
 
 <!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
 
+<!-- Only about 6% of Black college students study abroad — a fraction that reflects real barriers like financial strain, lack of institutional support, and the emotional weight of navigating foreign spaces as a Black person. Most existing resources are buried in university websites or written for a general audience that doesn't account for the HBCU experience. This guide exists to put everything in one place, in language that actually speaks to you. -->
+
 ---
 
 ## Documents
