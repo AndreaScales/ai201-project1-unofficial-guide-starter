@@ -1,0 +1,3 @@
+Study abroad programs give students the opportunity to spend a period of time immersed in another culture while pursuing their degree. Planning ahead helps with budgeting, health, and cultural adjustment. Protective hairstyles, packed moisturizers, and researching local resources are often recommended for travelers with textured hair.
+
+This sample file is used to validate the ingestion and chunking script. It contains multiple sentences so the chunker can prefer sentence boundaries.

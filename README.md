@@ -56,7 +56,38 @@ This knowledge is very valuable because a lot of colleges don't have resources c
 
 **Why these choices fit your documents:**
 
-**Final chunk count:**
+**Final chunk count:** 81
+
+## Ingestion and chunking
+
+Run a quick self-test that creates sample chunks:
+
+```bash
+python3 src/ingest.py --test
+```
+
+To ingest local `documents/` and produce `data/chunks.jsonl`:
+
+```bash
+python3 src/ingest.py --out data/chunks.jsonl
+```
+
+Note: remote fetching for URLs listed in `data/sources.json` is left as a separate step to avoid introducing network dependencies in tests.
+
+## Embedding and Retrieval
+
+Compute embeddings for `data/chunks.jsonl` and store them in ChromaDB:
+
+```bash
+python3 src/embed_and_store.py --chunks data/chunks.jsonl --persist-dir db/chroma --collection chunks
+```
+
+Run a quick retrieval test after indexing:
+
+```bash
+python3 src/embed_and_store.py --chunks data/chunks.jsonl --persist-dir db/chroma --collection chunks --test-query "What scholarships exist for HBCU students?"
+```
+
 
 ---
 

@@ -3,6 +3,13 @@ chromadb>=0.6.0
 groq==0.15.0
 python-dotenv==1.0.1
 
+# Optional: tqdm can improve progress bars during embedding
+tqdm>=4.65.0
+
+# HTTP fetching + HTML parsing for ingestion
+requests>=2.30.0
+beautifulsoup4>=4.12.2
+
 # Query interface — add whichever you use for Milestone 5:
 # gradio>=6.9.0
 # streamlit>=1.40.0

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.3",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{let r=arguments[0][e];delete arguments[0][e],arguments[0][t(e)]=r})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	
+	<script data-cfasync="false" data-no-defer="1" data-no-minify="1" data-no-optimize="1">var ewww_webp_supported=!1;function check_webp_feature(A,e){var w;e=void 0!==e?e:function(){},ewww_webp_supported?e(ewww_webp_supported):((w=new Image).onload=function(){ewww_webp_supported=0<w.width&&0<w.height,e&&e(ewww_webp_supported)},w.onerror=function(){e&&e(!1)},w.src="data:image/webp;base64,"+{alpha:"UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA=="}[A])}check_webp_feature("alpha");</script><script data-cfasync="false" data-no-defer="1" data-no-minify="1" data-no-optimize="1">var Arrive=function(c,w){"use strict";if(c.MutationObserver&&"undefined"!=typeof HTMLElement){var r,a=0,u=(r=HTMLElement.prototype.matches||HTMLElement.prototype.webkitMatchesSelector||HTMLElement.prototype.mozMatchesSelector||HTMLElement.prototype.msMatchesSelector,{matchesSelector:function(e,t){return e instanceof HTMLElement&&r.call(e,t)},addMethod:function(e,t,r){var a=e[t];e[t]=function(){return r.length==arguments.length?r.apply(this,arguments):"function"==typeof a?a.apply(this,arguments):void 0}},callCallbacks:function(e,t){t&&t.options.onceOnly&&1==t.firedElems.length&&(e=[e[0]]);for(var r,a=0;r=e[a];a++)r&&r.callback&&r.callback.call(r.elem,r.elem);t&&t.options.onceOnly&&1==t.firedElems.length&&t.me.unbindEventWithSelectorAndCallback.call(t.target,t.selector,t.callback)},checkChildNodesRecursively:function(e,t,r,a){for(var i,n=0;i=e[n];n++)r(i,t,a)&&a.push({callback:t.callback,elem:i}),0<i.childNodes.length&&u.checkChildNodesRecursively(i.childNodes,t,r,a)},mergeArrays:function(e,t){var r,a={};for(r in e)e.hasOwnProperty(r)&&(a[r]=e[r]);for(r in t)t.hasOwnProperty(r)&&(a[r]=t[r]);return a},toElementsArray:function(e){return e=void 0!==e&&("number"!=typeof e.length||e===c)?[e]:e}}),e=(l.prototype.addEvent=function(e,t,r,a){a={target:e,selector:t,options:r,callback:a,firedElems:[]};return this._beforeAdding&&this._beforeAdding(a),this._eventsBucket.push(a),a},l.prototype.removeEvent=function(e){for(var t,r=this._eventsBucket.length-1;t=this._eventsBucket[r];r--)e(t)&&(this._beforeRemoving&&this._beforeRemoving(t),(t=this._eventsBucket.splice(r,1))&&t.length&&(t[0].callback=null))},l.prototype.beforeAdding=function(e){this._beforeAdding=e},l.prototype.beforeRemoving=function(e){this._beforeRemoving=e},l),t=function(i,n){var o=new e,l=this,s={fireOnAttributesModification:!1};return o.beforeAdding(function(t){var e=t.target;e!==c.document&&e!==c||(e=document.getElementsByTagName("html")[0]);var r=new MutationObserver(function(e){n.call(this,e,t)}),a=i(t.options);r.observe(e,a),t.observer=r,t.me=l}),o.beforeRemoving(function(e){e.observer.disconnect()}),this.bindEvent=function(e,t,r){t=u.mergeArrays(s,t);for(var a=u.toElementsArray(this),i=0;i<a.length;i++)o.addEvent(a[i],e,t,r)},this.unbindEvent=function(){var r=u.toElementsArray(this);o.removeEvent(function(e){for(var t=0;t<r.length;t++)if(this===w||e.target===r[t])return!0;return!1})},this.unbindEventWithSelectorOrCallback=function(r){var a=u.toElementsArray(this),i=r,e="function"==typeof r?function(e){for(var t=0;t<a.length;t++)if((this===w||e.target===a[t])&&e.callback===i)return!0;return!1}:function(e){for(var t=0;t<a.length;t++)if((this===w||e.target===a[t])&&e.selector===r)return!0;return!1};o.removeEvent(e)},this.unbindEventWithSelectorAndCallback=function(r,a){var i=u.toElementsArray(this);o.removeEvent(function(e){for(var t=0;t<i.length;t++)if((this===w||e.target===i[t])&&e.selector===r&&e.callback===a)return!0;return!1})},this},i=new function(){var s={fireOnAttributesModification:!1,onceOnly:!1,existing:!1};function n(e,t,r){return!(!u.matchesSelector(e,t.selector)||(e._id===w&&(e._id=a++),-1!=t.firedElems.indexOf(e._id)))&&(t.firedElems.push(e._id),!0)}var c=(i=new t(function(e){var t={attributes:!1,childList:!0,subtree:!0};return e.fireOnAttributesModification&&(t.attributes=!0),t},function(e,i){e.forEach(function(e){var t=e.addedNodes,r=e.target,a=[];null!==t&&0<t.length?u.checkChildNodesRecursively(t,i,n,a):"attributes"===e.type&&n(r,i)&&a.push({callback:i.callback,elem:r}),u.callCallbacks(a,i)})})).bindEvent;return i.bindEvent=function(e,t,r){t=void 0===r?(r=t,s):u.mergeArrays(s,t);var a=u.toElementsArray(this);if(t.existing){for(var i=[],n=0;n<a.length;n++)for(var o=a[n].querySelectorAll(e),l=0;l<o.length;l++)i.push({callback:r,elem:o[l]});if(t.onceOnly&&i.length)return r.call(i[0].elem,i[0].elem);setTimeout(u.callCallbacks,1,i)}c.call(this,e,t,r)},i},o=new function(){var a={};function i(e,t){return u.matchesSelector(e,t.selector)}var n=(o=new t(function(){return{childList:!0,subtree:!0}},function(e,r){e.forEach(function(e){var t=e.removedNodes,e=[];null!==t&&0<t.length&&u.checkChildNodesRecursively(t,r,i,e),u.callCallbacks(e,r)})})).bindEvent;return o.bindEvent=function(e,t,r){t=void 0===r?(r=t,a):u.mergeArrays(a,t),n.call(this,e,t,r)},o};d(HTMLElement.prototype),d(NodeList.prototype),d(HTMLCollection.prototype),d(HTMLDocument.prototype),d(Window.prototype);var n={};return s(i,n,"unbindAllArrive"),s(o,n,"unbindAllLeave"),n}function l(){this._eventsBucket=[],this._beforeAdding=null,this._beforeRemoving=null}function s(e,t,r){u.addMethod(t,r,e.unbindEvent),u.addMethod(t,r,e.unbindEventWithSelectorOrCallback),u.addMethod(t,r,e.unbindEventWithSelectorAndCallback)}function d(e){e.arrive=i.bindEvent,s(i,e,"unbindArrive"),e.leave=o.bindEvent,s(o,e,"unbindLeave")}}(window,void 0),ewww_webp_supported=!1;function check_webp_feature(e,t){var r;ewww_webp_supported?t(ewww_webp_supported):((r=new Image).onload=function(){ewww_webp_supported=0<r.width&&0<r.height,t(ewww_webp_supported)},r.onerror=function(){t(!1)},r.src="data:image/webp;base64,"+{alpha:"UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==",animation:"UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA"}[e])}function ewwwLoadImages(e){if(e){for(var t=document.querySelectorAll(".batch-image img, .image-wrapper a, .ngg-pro-masonry-item a, .ngg-galleria-offscreen-seo-wrapper a"),r=0,a=t.length;r<a;r++)ewwwAttr(t[r],"data-src",t[r].getAttribute("data-webp")),ewwwAttr(t[r],"data-thumbnail",t[r].getAttribute("data-webp-thumbnail"));for(var i=document.querySelectorAll("div.woocommerce-product-gallery__image"),r=0,a=i.length;r<a;r++)ewwwAttr(i[r],"data-thumb",i[r].getAttribute("data-webp-thumb"))}for(var n=document.querySelectorAll("video"),r=0,a=n.length;r<a;r++)ewwwAttr(n[r],"poster",e?n[r].getAttribute("data-poster-webp"):n[r].getAttribute("data-poster-image"));for(var o,l=document.querySelectorAll("img.ewww_webp_lazy_load"),r=0,a=l.length;r<a;r++)e&&(ewwwAttr(l[r],"data-lazy-srcset",l[r].getAttribute("data-lazy-srcset-webp")),ewwwAttr(l[r],"data-srcset",l[r].getAttribute("data-srcset-webp")),ewwwAttr(l[r],"data-lazy-src",l[r].getAttribute("data-lazy-src-webp")),ewwwAttr(l[r],"data-src",l[r].getAttribute("data-src-webp")),ewwwAttr(l[r],"data-orig-file",l[r].getAttribute("data-webp-orig-file")),ewwwAttr(l[r],"data-medium-file",l[r].getAttribute("data-webp-medium-file")),ewwwAttr(l[r],"data-large-file",l[r].getAttribute("data-webp-large-file")),null!=(o=l[r].getAttribute("srcset"))&&!1!==o&&o.includes("R0lGOD")&&ewwwAttr(l[r],"src",l[r].getAttribute("data-lazy-src-webp"))),l[r].className=l[r].className.replace(/\bewww_webp_lazy_load\b/,"");for(var s=document.querySelectorAll(".ewww_webp"),r=0,a=s.length;r<a;r++)e?(ewwwAttr(s[r],"srcset",s[r].getAttribute("data-srcset-webp")),ewwwAttr(s[r],"src",s[r].getAttribute("data-src-webp")),ewwwAttr(s[r],"data-orig-file",s[r].getAttribute("data-webp-orig-file")),ewwwAttr(s[r],"data-medium-file",s[r].getAttribute("data-webp-medium-file")),ewwwAttr(s[r],"data-large-file",s[r].getAttribute("data-webp-large-file")),ewwwAttr(s[r],"data-large_image",s[r].getAttribute("data-webp-large_image")),ewwwAttr(s[r],"data-src",s[r].getAttribute("data-webp-src"))):(ewwwAttr(s[r],"srcset",s[r].getAttribute("data-srcset-img")),ewwwAttr(s[r],"src",s[r].getAttribute("data-src-img"))),s[r].className=s[r].className.replace(/\bewww_webp\b/,"ewww_webp_loaded");window.jQuery&&jQuery.fn.isotope&&jQuery.fn.imagesLoaded&&(jQuery(".fusion-posts-container-infinite").imagesLoaded(function(){jQuery(".fusion-posts-container-infinite").hasClass("isotope")&&jQuery(".fusion-posts-container-infinite").isotope()}),jQuery(".fusion-portfolio:not(.fusion-recent-works) .fusion-portfolio-wrapper").imagesLoaded(function(){jQuery(".fusion-portfolio:not(.fusion-recent-works) .fusion-portfolio-wrapper").isotope()}))}function ewwwWebPInit(e){ewwwLoadImages(e),ewwwNggLoadGalleries(e),document.arrive(".ewww_webp",function(){ewwwLoadImages(e)}),document.arrive(".ewww_webp_lazy_load",function(){ewwwLoadImages(e)}),document.arrive("videos",function(){ewwwLoadImages(e)}),"loading"==document.readyState?document.addEventListener("DOMContentLoaded",ewwwJSONParserInit):("undefined"!=typeof galleries&&ewwwNggParseGalleries(e),ewwwWooParseVariations(e))}function ewwwAttr(e,t,r){null!=r&&!1!==r&&e.setAttribute(t,r)}function ewwwJSONParserInit(){"undefined"!=typeof galleries&&check_webp_feature("alpha",ewwwNggParseGalleries),check_webp_feature("alpha",ewwwWooParseVariations)}function ewwwWooParseVariations(e){if(e)for(var t=document.querySelectorAll("form.variations_form"),r=0,a=t.length;r<a;r++){var i=t[r].getAttribute("data-product_variations"),n=!1;try{for(var o in i=JSON.parse(i))void 0!==i[o]&&void 0!==i[o].image&&(void 0!==i[o].image.src_webp&&(i[o].image.src=i[o].image.src_webp,n=!0),void 0!==i[o].image.srcset_webp&&(i[o].image.srcset=i[o].image.srcset_webp,n=!0),void 0!==i[o].image.full_src_webp&&(i[o].image.full_src=i[o].image.full_src_webp,n=!0),void 0!==i[o].image.gallery_thumbnail_src_webp&&(i[o].image.gallery_thumbnail_src=i[o].image.gallery_thumbnail_src_webp,n=!0),void 0!==i[o].image.thumb_src_webp&&(i[o].image.thumb_src=i[o].image.thumb_src_webp,n=!0));n&&ewwwAttr(t[r],"data-product_variations",JSON.stringify(i))}catch(e){}}}function ewwwNggParseGalleries(e){if(e)for(var t in galleries){var r=galleries[t];galleries[t].images_list=ewwwNggParseImageList(r.images_list)}}function ewwwNggLoadGalleries(e){e&&document.addEventListener("ngg.galleria.themeadded",function(e,t){window.ngg_galleria._create_backup=window.ngg_galleria.create,window.ngg_galleria.create=function(e,t){var r=$(e).data("id");return galleries["gallery_"+r].images_list=ewwwNggParseImageList(galleries["gallery_"+r].images_list),window.ngg_galleria._create_backup(e,t)}})}function ewwwNggParseImageList(e){for(var t in e){var r=e[t];if(void 0!==r["image-webp"]&&(e[t].image=r["image-webp"],delete e[t]["image-webp"]),void 0!==r["thumb-webp"]&&(e[t].thumb=r["thumb-webp"],delete e[t]["thumb-webp"]),void 0!==r.full_image_webp&&(e[t].full_image=r.full_image_webp,delete e[t].full_image_webp),void 0!==r.srcsets)for(var a in r.srcsets)nggSrcset=r.srcsets[a],void 0!==r.srcsets[a+"-webp"]&&(e[t].srcsets[a]=r.srcsets[a+"-webp"],delete e[t].srcsets[a+"-webp"]);if(void 0!==r.full_srcsets)for(var i in r.full_srcsets)nggFSrcset=r.full_srcsets[i],void 0!==r.full_srcsets[i+"-webp"]&&(e[t].full_srcsets[i]=r.full_srcsets[i+"-webp"],delete e[t].full_srcsets[i+"-webp"])}return e}check_webp_feature("alpha",ewwwWebPInit);</script><meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+                                    
+            
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- This site is optimized with the Yoast SEO Premium plugin v18.0 (Yoast SEO v22.7) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>The Ultimate Guide to Black Travel - Blog</title>
+	<meta name="description" content="Explore world with The Ultimate Guide to Black Travel. Discover diverse destinations, cultural experiences &amp; tips for unforgettable journey" />
+	<link rel="canonical" href="https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="The Ultimate Guide to Black Travel" />
+	<meta property="og:description" content="Explore world with The Ultimate Guide to Black Travel. Discover diverse destinations, cultural experiences &amp; tips for unforgettable journey" />
+	<meta property="og:url" content="https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/" />
+	<meta property="og:site_name" content="Blog" />
+	<meta property="article:published_time" content="2021-12-27T18:37:27+00:00" />
+	<meta property="article:modified_time" content="2024-02-25T13:24:33+00:00" />
+	<meta property="og:image" content="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2020/09/AdobeStock_243600569-scaled.jpeg" />
+	<meta property="og:image:width" content="2560" />
+	<meta property="og:image:height" content="1707" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="author" content="Lawrence Phillips" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Lawrence Phillips" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="8 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/#article","isPartOf":{"@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/"},"author":{"name":"Lawrence Phillips","@id":"https://greenbookglobal.com/travel-the-world/#/schema/person/2a213397ceffec7241fbc6e63787d144"},"headline":"The Ultimate Guide to Black Travel","datePublished":"2021-12-27T18:37:27+00:00","dateModified":"2024-02-25T13:24:33+00:00","mainEntityOfPage":{"@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/"},"wordCount":1891,"commentCount":0,"publisher":{"@id":"https://greenbookglobal.com/travel-the-world/#organization"},"image":{"@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/#primaryimage"},"thumbnailUrl":"https://greenbookglobal.com/travel-the-world/wp-content/uploads/2020/09/AdobeStock_243600569-scaled.jpeg","keywords":["Home","Technology"],"articleSection":["All Posts","Black Travel","Travel Guides"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/#respond"]}]},{"@type":"WebPage","@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/","url":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/","name":"The Ultimate Guide to Black Travel - Blog","isPartOf":{"@id":"https://greenbookglobal.com/travel-the-world/#website"},"primaryImageOfPage":{"@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/#primaryimage"},"image":{"@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/#primaryimage"},"thumbnailUrl":"https://greenbookglobal.com/travel-the-world/wp-content/uploads/2020/09/AdobeStock_243600569-scaled.jpeg","datePublished":"2021-12-27T18:37:27+00:00","dateModified":"2024-02-25T13:24:33+00:00","description":"Explore world with The Ultimate Guide to Black Travel. Discover diverse destinations, cultural experiences & tips for unforgettable journey","breadcrumb":{"@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/#primaryimage","url":"https://greenbookglobal.com/travel-the-world/wp-content/uploads/2020/09/AdobeStock_243600569-scaled.jpeg","contentUrl":"https://greenbookglobal.com/travel-the-world/wp-content/uploads/2020/09/AdobeStock_243600569-scaled.jpeg","width":1620,"height":1080,"caption":"AdobeStock 243600569 scaled"},{"@type":"BreadcrumbList","@id":"https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://greenbookglobal.com/travel-the-world/"},{"@type":"ListItem","position":2,"name":"Travel blog","item":"https://greenbookglobal.com/travel-the-world/blog/"},{"@type":"ListItem","position":3,"name":"The Ultimate Guide to Black Travel"}]},{"@type":"WebSite","@id":"https://greenbookglobal.com/travel-the-world/#website","url":"https://greenbookglobal.com/travel-the-world/","name":"Blog","description":"Just another WordPress site","publisher":{"@id":"https://greenbookglobal.com/travel-the-world/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://greenbookglobal.com/travel-the-world/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://greenbookglobal.com/travel-the-world/#organization","name":"Blog","url":"https://greenbookglobal.com/travel-the-world/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://greenbookglobal.com/travel-the-world/#/schema/logo/image/","url":"https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png","contentUrl":"https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png","width":420,"height":304,"caption":"Blog"},"image":{"@id":"https://greenbookglobal.com/travel-the-world/#/schema/logo/image/"}},{"@type":"Person","@id":"https://greenbookglobal.com/travel-the-world/#/schema/person/2a213397ceffec7241fbc6e63787d144","name":"Lawrence Phillips","description":"Lawrence Phillips is a Diversity Equity and Inclusion consultant and the founder of Green Book Global, a travel review platform dedicated to inspiring and empowering black travelers to confidently explore the world. It was formed when Lawrence embarked on a 30 country, 7-continent adventure around the world and noticed there was no consistent resource that could provide destination insights on racism.","url":"https://greenbookglobal.com/travel-the-world/author/larry_naomi/"}]}</script>
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link href='https://fonts.googleapis.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Blog &raquo; Feed" href="https://greenbookglobal.com/travel-the-world/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Blog &raquo; Comments Feed" href="https://greenbookglobal.com/travel-the-world/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Blog &raquo; The Ultimate Guide to Black Travel Comments Feed" href="https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://greenbookglobal.com/travel-the-world/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgreenbookglobal.com%2Ftravel-the-world%2Fultimate-guide-to-black-travel%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://greenbookglobal.com/travel-the-world/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgreenbookglobal.com%2Ftravel-the-world%2Fultimate-guide-to-black-travel%2F&#038;format=xml" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='sgr-css' href='https://greenbookglobal.com/travel-the-world/wp-content/cache/min/1/travel-the-world/wp-content/plugins/simple-google-recaptcha/sgr.css?ver=1768027830' media='all' />
+<link rel='stylesheet' id='generate-fonts-css' href='//fonts.googleapis.com/css?family=Fira+Sans:regular|Poppins:regular,500,600' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://greenbookglobal.com/travel-the-world/wp-includes/css/dist/block-library/style.min.css?ver=6.9' media='all' />
+<style id='wp-block-heading-inline-css'>
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://greenbookglobal.com/travel-the-world/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id='wp-block-image-inline-css'>
+.wp-block-image>a,.wp-block-image>figure>a{display:inline-block}.wp-block-image img{box-sizing:border-box;height:auto;max-width:100%;vertical-align:bottom}@media not (prefers-reduced-motion){.wp-block-image img.hide{visibility:hidden}.wp-block-image img.show{animation:show-content-image .4s}}.wp-block-image[style*=border-radius] img,.wp-block-image[style*=border-radius]>a{border-radius:inherit}.wp-block-image.has-custom-border img{box-sizing:border-box}.wp-block-image.aligncenter{text-align:center}.wp-block-image.alignfull>a,.wp-block-image.alignwide>a{width:100%}.wp-block-image.alignfull img,.wp-block-image.alignwide img{height:auto;width:100%}.wp-block-image .aligncenter,.wp-block-image .alignleft,.wp-block-image .alignright,.wp-block-image.aligncenter,.wp-block-image.alignleft,.wp-block-image.alignright{display:table}.wp-block-image .aligncenter>figcaption,.wp-block-image .alignleft>figcaption,.wp-block-image .alignright>figcaption,.wp-block-image.aligncenter>figcaption,.wp-block-image.alignleft>figcaption,.wp-block-image.alignright>figcaption{caption-side:bottom;display:table-caption}.wp-block-image .alignleft{float:left;margin:.5em 1em .5em 0}.wp-block-image .alignright{float:right;margin:.5em 0 .5em 1em}.wp-block-image .aligncenter{margin-left:auto;margin-right:auto}.wp-block-image :where(figcaption){margin-bottom:1em;margin-top:.5em}.wp-block-image.is-style-circle-mask img{border-radius:9999px}@supports ((-webkit-mask-image:none) or (mask-image:none)) or (-webkit-mask-image:none){.wp-block-image.is-style-circle-mask img{border-radius:0;-webkit-mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-image:url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"/></svg>');mask-mode:alpha;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-size:contain;mask-size:contain}}:root :where(.wp-block-image.is-style-rounded img,.wp-block-image .is-style-rounded img){border-radius:9999px}.wp-block-image figure{margin:0}.wp-lightbox-container{display:flex;flex-direction:column;position:relative}.wp-lightbox-container img{cursor:zoom-in}.wp-lightbox-container img:hover+button{opacity:1}.wp-lightbox-container button{align-items:center;backdrop-filter:blur(16px) saturate(180%);background-color:#5a5a5a40;border:none;border-radius:4px;cursor:zoom-in;display:flex;height:20px;justify-content:center;opacity:0;padding:0;position:absolute;right:16px;text-align:center;top:16px;width:20px;z-index:100}@media not (prefers-reduced-motion){.wp-lightbox-container button{transition:opacity .2s ease}}.wp-lightbox-container button:focus-visible{outline:3px auto #5a5a5a40;outline:3px auto -webkit-focus-ring-color;outline-offset:3px}.wp-lightbox-container button:hover{cursor:pointer;opacity:1}.wp-lightbox-container button:focus{opacity:1}.wp-lightbox-container button:focus,.wp-lightbox-container button:hover,.wp-lightbox-container button:not(:hover):not(:active):not(.has-background){background-color:#5a5a5a40;border:none}.wp-lightbox-overlay{box-sizing:border-box;cursor:zoom-out;height:100vh;left:0;overflow:hidden;position:fixed;top:0;visibility:hidden;width:100%;z-index:100000}.wp-lightbox-overlay .close-button{align-items:center;cursor:pointer;display:flex;justify-content:center;min-height:40px;min-width:40px;padding:0;position:absolute;right:calc(env(safe-area-inset-right) + 16px);top:calc(env(safe-area-inset-top) + 16px);z-index:5000000}.wp-lightbox-overlay .close-button:focus,.wp-lightbox-overlay .close-button:hover,.wp-lightbox-overlay .close-button:not(:hover):not(:active):not(.has-background){background:none;border:none}.wp-lightbox-overlay .lightbox-image-container{height:var(--wp--lightbox-container-height);left:50%;overflow:hidden;position:absolute;top:50%;transform:translate(-50%,-50%);transform-origin:top left;width:var(--wp--lightbox-container-width);z-index:9999999999}.wp-lightbox-overlay .wp-block-image{align-items:center;box-sizing:border-box;display:flex;height:100%;justify-content:center;margin:0;position:relative;transform-origin:0 0;width:100%;z-index:3000000}.wp-lightbox-overlay .wp-block-image img{height:var(--wp--lightbox-image-height);min-height:var(--wp--lightbox-image-height);min-width:var(--wp--lightbox-image-width);width:var(--wp--lightbox-image-width)}.wp-lightbox-overlay .wp-block-image figcaption{display:none}.wp-lightbox-overlay button{background:none;border:none}.wp-lightbox-overlay .scrim{background-color:#fff;height:100%;opacity:.9;position:absolute;width:100%;z-index:2000000}.wp-lightbox-overlay.active{visibility:visible}@media not (prefers-reduced-motion){.wp-lightbox-overlay.active{animation:turn-on-visibility .25s both}.wp-lightbox-overlay.active img{animation:turn-on-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active){animation:turn-off-visibility .35s both}.wp-lightbox-overlay.show-closing-animation:not(.active) img{animation:turn-off-visibility .25s both}.wp-lightbox-overlay.zoom.active{animation:none;opacity:1;visibility:visible}.wp-lightbox-overlay.zoom.active .lightbox-image-container{animation:lightbox-zoom-in .4s}.wp-lightbox-overlay.zoom.active .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.active .scrim{animation:turn-on-visibility .4s forwards}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active){animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container{animation:lightbox-zoom-out .4s}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .lightbox-image-container img{animation:none}.wp-lightbox-overlay.zoom.show-closing-animation:not(.active) .scrim{animation:turn-off-visibility .4s forwards}}@keyframes show-content-image{0%{visibility:hidden}99%{visibility:hidden}to{visibility:visible}}@keyframes turn-on-visibility{0%{opacity:0}to{opacity:1}}@keyframes turn-off-visibility{0%{opacity:1;visibility:visible}99%{opacity:0;visibility:visible}to{opacity:0;visibility:hidden}}@keyframes lightbox-zoom-in{0%{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale))}to{transform:translate(-50%,-50%) scale(1)}}@keyframes lightbox-zoom-out{0%{transform:translate(-50%,-50%) scale(1);visibility:visible}99%{visibility:visible}to{transform:translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));visibility:hidden}}
+/*# sourceURL=https://greenbookglobal.com/travel-the-world/wp-includes/blocks/image/style.min.css */
+</style>
+<style id='wp-block-list-inline-css'>
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://greenbookglobal.com/travel-the-world/wp-includes/blocks/list/style.min.css */
+</style>
+<style id='wp-block-paragraph-inline-css'>
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://greenbookglobal.com/travel-the-world/wp-includes/blocks/paragraph/style.min.css */
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--contrast: var(--contrast);--wp--preset--color--contrast-2: var(--contrast-2);--wp--preset--color--contrast-3: var(--contrast-3);--wp--preset--color--base: var(--base);--wp--preset--color--base-2: var(--base-2);--wp--preset--color--base-3: var(--base-3);--wp--preset--color--accent: var(--accent);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<link rel='stylesheet' id='wp-ai-content-generator-css' href='https://greenbookglobal.com/travel-the-world/wp-content/plugins/gpt3-ai-content-generator/public/css/wp-ai-content-generator-public.css?ver=1.8.64' media='all' />
+<link data-minify="1" rel='stylesheet' id='mailerlite_forms.css-css' href='https://greenbookglobal.com/travel-the-world/wp-content/cache/min/1/travel-the-world/wp-content/plugins/official-mailerlite-sign-up-forms/assets/css/mailerlite_forms.css?ver=1768027830' media='all' />
+<link rel='stylesheet' id='wp-show-posts-css' href='https://greenbookglobal.com/travel-the-world/wp-content/plugins/wp-show-posts/css/wp-show-posts-min.css?ver=1.1.6' media='all' />
+<link rel='stylesheet' id='generate-comments-css' href='https://greenbookglobal.com/travel-the-world/wp-content/themes/generatepress/assets/css/components/comments.min.css?ver=3.4.0' media='all' />
+<link rel='stylesheet' id='generate-style-css' href='https://greenbookglobal.com/travel-the-world/wp-content/themes/generatepress/assets/css/main.min.css?ver=3.4.0' media='all' />
+<style id='generate-style-inline-css'>
+body{background-color:#ffffff;color:#121212;}a{color:#0000ff;}a:hover, a:focus, a:active{color:#66ccaa;}.wp-block-group__inner-container{max-width:1200px;margin-left:auto;margin-right:auto;}.site-header .header-image{width:100px;}:root{--contrast:#222222;--contrast-2:#575760;--contrast-3:#b2b2be;--base:#f0f0f0;--base-2:#f7f8f9;--base-3:#ffffff;--accent:#1e73be;}:root .has-contrast-color{color:var(--contrast);}:root .has-contrast-background-color{background-color:var(--contrast);}:root .has-contrast-2-color{color:var(--contrast-2);}:root .has-contrast-2-background-color{background-color:var(--contrast-2);}:root .has-contrast-3-color{color:var(--contrast-3);}:root .has-contrast-3-background-color{background-color:var(--contrast-3);}:root .has-base-color{color:var(--base);}:root .has-base-background-color{background-color:var(--base);}:root .has-base-2-color{color:var(--base-2);}:root .has-base-2-background-color{background-color:var(--base-2);}:root .has-base-3-color{color:var(--base-3);}:root .has-base-3-background-color{background-color:var(--base-3);}:root .has-accent-color{color:var(--accent);}:root .has-accent-background-color{background-color:var(--accent);}body, button, input, select, textarea{font-family:"Fira Sans", sans-serif;font-size:18px;}body{line-height:1.5;}.entry-content > [class*="wp-block-"]:not(:last-child):not(.wp-block-heading){margin-bottom:1.5em;}.main-navigation a, .menu-toggle{font-weight:700;text-transform:uppercase;}.main-navigation .main-nav ul ul li a{font-size:14px;}.widget-title{font-weight:500;font-size:18px;margin-bottom:20px;}.sidebar .widget, .footer-widgets .widget{font-size:16px;}button:not(.menu-toggle),html input[type="button"],input[type="reset"],input[type="submit"],.button,.wp-block-button .wp-block-button__link{font-weight:700;text-transform:uppercase;font-size:18px;}h1{font-family:"Poppins", sans-serif;font-weight:600;text-transform:uppercase;font-size:30px;}h2{font-family:"Poppins", sans-serif;font-weight:600;font-size:28px;line-height:1.3em;margin-bottom:30px;}h3{font-family:"Poppins", sans-serif;font-weight:500;font-size:24px;line-height:1.3em;margin-bottom:30px;}h4{font-family:"Poppins", sans-serif;font-weight:500;font-size:22px;line-height:1.3em;}@media (max-width:768px){h1{font-size:30px;}h2{font-size:28px;}h3{font-size:24px;}h4{font-size:22px;}h5{font-size:19px;}}.top-bar{background-color:#636363;color:#ffffff;}.top-bar a{color:#ffffff;}.top-bar a:hover{color:#303030;}.site-header{background-color:#1f3d4d;color:#ffffff;}.site-header a{color:#ffffff;}.site-header a:hover{color:#66ccaa;}.main-title a,.main-title a:hover{color:#ffffff;}.site-description{color:#ffffff;}.main-navigation .main-nav ul li a, .main-navigation .menu-toggle, .main-navigation .menu-bar-items{color:#ffffff;}.main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a, .main-navigation .main-nav ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul li.sfHover:not([class*="current-menu-"]) > a, .main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{color:#66ccaa;}button.menu-toggle:hover,button.menu-toggle:focus{color:#ffffff;}.main-navigation .main-nav ul li[class*="current-menu-"] > a{color:#ffffff;}.navigation-search input[type="search"],.navigation-search input[type="search"]:active, .navigation-search input[type="search"]:focus, .main-navigation .main-nav ul li.search-item.active > a, .main-navigation .menu-bar-items .search-item.active > a{color:#1f3d4d;background-color:#f7f9fa;opacity:1;}.main-navigation ul ul{background-color:#1f3d4d;}.main-navigation .main-nav ul ul li a{color:#ffffff;}.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):hover > a,.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):focus > a, .main-navigation .main-nav ul ul li.sfHover:not([class*="current-menu-"]) > a{color:#66ccaa;background-color:#1f3d4d;}.main-navigation .main-nav ul ul li[class*="current-menu-"] > a{color:#ffffff;background-color:#1f3d4d;}.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .one-container .container, .separate-containers .paging-navigation, .inside-page-header{color:#121212;background-color:#ffffff;}.inside-article a,.paging-navigation a,.comments-area a,.page-header a{color:#1f3d4d;}.inside-article a:hover,.paging-navigation a:hover,.comments-area a:hover,.page-header a:hover{color:#66ccaa;}.entry-header h1,.page-header h1{color:#1f3d4d;}.entry-title a{color:#1f3d4d;}.entry-title a:hover{color:#66ccaa;}.entry-meta{color:#666666;}.entry-meta a{color:#666666;}.entry-meta a:hover{color:#888888;}h1{color:#1f3d4d;}h2{color:#1f3d4d;}h3{color:#1f3d4d;}h4{color:#1f3d4d;}h5{color:#1f3d4d;}.sidebar .widget{color:#121212;background-color:rgba(247,249,250,0.6);}.sidebar .widget a{color:#1f3d4d;}.sidebar .widget a:hover{color:#66ccaa;}.sidebar .widget .widget-title{color:#1f3d4d;}input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],textarea,select{color:#666666;background-color:#f7f9fa;border-color:#dddddd;}input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="number"]:focus,textarea:focus,select:focus{color:#666666;background-color:#f7f9fa;border-color:#dddddd;}button,html input[type="button"],input[type="reset"],input[type="submit"],a.button,a.wp-block-button__link:not(.has-background){color:#ffffff;background-color:#66ccaa;}button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,a.button:hover,button:focus,html input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,a.button:focus,a.wp-block-button__link:not(.has-background):active,a.wp-block-button__link:not(.has-background):focus,a.wp-block-button__link:not(.has-background):hover{color:#ffffff;background-color:#1f3d4d;}a.generate-back-to-top{background-color:#66ccaa;color:#ffffff;}a.generate-back-to-top:hover,a.generate-back-to-top:focus{background-color:#1f3d4d;color:#ffffff;}:root{--gp-search-modal-bg-color:var(--base-3);--gp-search-modal-text-color:var(--contrast);--gp-search-modal-overlay-bg-color:rgba(0,0,0,0.2);}@media (max-width: 1024px){.main-navigation .menu-bar-item:hover > a, .main-navigation .menu-bar-item.sfHover > a{background:none;color:#ffffff;}}.inside-header{padding:40px 20px 20px 20px;}.nav-below-header .main-navigation .inside-navigation.grid-container, .nav-above-header .main-navigation .inside-navigation.grid-container{padding:0px 4px 0px 4px;}.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header{padding:100px 20px 0px 20px;}.site-main .wp-block-group__inner-container{padding:100px 20px 0px 20px;}.separate-containers .paging-navigation{padding-top:20px;padding-bottom:20px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-20px;width:calc(100% + 40px);max-width:calc(100% + 40px);}.one-container.right-sidebar .site-main,.one-container.both-right .site-main{margin-right:20px;}.one-container.left-sidebar .site-main,.one-container.both-left .site-main{margin-left:20px;}.one-container.both-sidebars .site-main{margin:0px 20px 0px 20px;}.sidebar .widget, .page-header, .widget-area .main-navigation, .site-main > *{margin-bottom:10px;}.separate-containers .site-main{margin:10px;}.both-right .inside-left-sidebar,.both-left .inside-left-sidebar{margin-right:5px;}.both-right .inside-right-sidebar,.both-left .inside-right-sidebar{margin-left:5px;}.one-container.archive .post:not(:last-child):not(.is-loop-template-item), .one-container.blog .post:not(:last-child):not(.is-loop-template-item){padding-bottom:0px;}.separate-containers .featured-image{margin-top:10px;}.separate-containers .inside-right-sidebar, .separate-containers .inside-left-sidebar{margin-top:10px;margin-bottom:10px;}.main-navigation .main-nav ul li a,.menu-toggle,.main-navigation .menu-bar-item > a{padding-left:24px;padding-right:24px;line-height:20px;}.main-navigation .main-nav ul ul li a{padding:10px 24px 10px 24px;}.navigation-search input[type="search"]{height:20px;}.rtl .menu-item-has-children .dropdown-menu-toggle{padding-left:24px;}.menu-item-has-children .dropdown-menu-toggle{padding-right:24px;}.rtl .main-navigation .main-nav ul li.menu-item-has-children > a{padding-right:24px;}.widget-area .widget{padding:30px;}@media (max-width:768px){.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content, .inside-page-header{padding:80px 20px 0px 20px;}.site-main .wp-block-group__inner-container{padding:80px 20px 0px 20px;}.inside-top-bar{padding-right:30px;padding-left:30px;}.inside-header{padding-top:15px;padding-right:30px;padding-bottom:20px;padding-left:25px;}.widget-area .widget{padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px;}.footer-widgets-container{padding-top:30px;padding-right:30px;padding-bottom:30px;padding-left:30px;}.inside-site-info{padding-right:30px;padding-left:30px;}.entry-content .alignwide, body:not(.no-sidebar) .entry-content .alignfull{margin-left:-20px;width:calc(100% + 40px);max-width:calc(100% + 40px);}.one-container .site-main .paging-navigation{margin-bottom:10px;}}/* End cached CSS */.is-right-sidebar{width:25%;}.is-left-sidebar{width:20%;}.site-content .content-area{width:100%;}@media (max-width: 1024px){.main-navigation .menu-toggle,.sidebar-nav-mobile:not(#sticky-placeholder){display:block;}.main-navigation ul,.gen-sidebar-nav,.main-navigation:not(.slideout-navigation):not(.toggled) .main-nav > ul,.has-inline-mobile-toggle #site-navigation .inside-navigation > *:not(.navigation-search):not(.main-nav){display:none;}.nav-align-right .inside-navigation,.nav-align-center .inside-navigation{justify-content:space-between;}.has-inline-mobile-toggle .mobile-menu-control-wrapper{display:flex;flex-wrap:wrap;}.has-inline-mobile-toggle .inside-header{flex-direction:row;text-align:left;flex-wrap:wrap;}.has-inline-mobile-toggle .header-widget,.has-inline-mobile-toggle #site-navigation{flex-basis:100%;}.nav-float-left .has-inline-mobile-toggle #site-navigation{order:10;}}
+.elementor-template-full-width .site-content{display:block;}
+#content {max-width: 800px;margin-left: auto;margin-right: auto;}
+.dynamic-author-image-rounded{border-radius:100%;}.dynamic-featured-image, .dynamic-author-image{vertical-align:middle;}.one-container.blog .dynamic-content-template:not(:last-child), .one-container.archive .dynamic-content-template:not(:last-child){padding-bottom:0px;}.dynamic-entry-excerpt > p:last-child{margin-bottom:0px;}
+h2.entry-title{font-weight:500;text-transform:none;font-size:24px;line-height:1.3em;}@media (max-width: 1024px){.main-navigation:not(.slideout-navigation) a, .main-navigation .menu-toggle, .main-navigation .menu-bar-items{font-size:22px;}.main-navigation:not(.slideout-navigation) .main-nav ul ul li a{font-size:19px;}}@media (max-width:768px){h2.entry-title{font-size:24px;}}@media (max-width: 1024px){.main-navigation:not(.slideout-navigation) a, .main-navigation .menu-toggle, .main-navigation .menu-bar-items{font-size:22px;}.main-navigation:not(.slideout-navigation) .main-nav ul ul li a{font-size:19px;}}
+.page-hero{background-color:rgba(31,61,77,0.94);background-image:url(https://greenbookglobal.com/travel-the-world/wp-content/uploads/2020/09/AdobeStock_243600569-scaled.jpeg);background-size:cover;background-image:linear-gradient(0deg, rgba(31,61,77,0.94),rgba(31,61,77,0.94)), url(https://greenbookglobal.com/travel-the-world/wp-content/uploads/2020/09/AdobeStock_243600569-scaled.jpeg);background-position:center center;background-repeat:no-repeat;color:#ffffff;padding-top:220px;padding-right:20px;padding-bottom:140px;padding-left:20px;text-align:center;}.page-hero .inside-page-hero.grid-container{max-width:calc(1200px - 20px - 20px);}.page-hero h1, .page-hero h2, .page-hero h3, .page-hero h4, .page-hero h5, .page-hero h6{color:#ffffff;}.inside-page-hero > *:last-child{margin-bottom:0px;}.page-hero time.updated{display:none;}.header-wrap{position:absolute;left:0px;right:0px;z-index:10;}.header-wrap .site-header{background:transparent;}.elementor-editor-active .header-wrap{pointer-events:none;}@media (max-width:768px){.page-hero{padding-top:200px;padding-right:20px;padding-bottom:120px;padding-left:20px;}}
+@media (max-width: 1024px){.main-navigation .menu-toggle,.main-navigation .mobile-bar-items a,.main-navigation .menu-bar-item > a{padding-left:0px;padding-right:0px;}.main-navigation .main-nav ul li a,.main-navigation .menu-toggle,.main-navigation .mobile-bar-items a,.main-navigation .menu-bar-item > a{line-height:44px;}.main-navigation .site-logo.navigation-logo img, .mobile-header-navigation .site-logo.mobile-header-logo img, .navigation-search input[type="search"]{height:44px;}}.post-image:not(:first-child), .page-content:not(:first-child), .entry-content:not(:first-child), .entry-summary:not(:first-child), footer.entry-meta{margin-top:0.5em;}.post-image-above-header .inside-article div.featured-image, .post-image-above-header .inside-article div.post-image{margin-bottom:0.5em;}.main-navigation.slideout-navigation .main-nav > ul > li > a{line-height:60px;}
+/*# sourceURL=generate-style-inline-css */
+</style>
+<style id='generateblocks-inline-css'>
+.gb-container-03f54485 > .gb-inside-container{padding:0 0 20px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-grid-wrapper > .gb-grid-column-03f54485 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-2bc51b12 > .gb-inside-container{padding:20px 0 30px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-grid-wrapper > .gb-grid-column-2bc51b12 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-a80a88ce{background-color:#dffff2;}.gb-container-a80a88ce > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-a80a88ce a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-a80a88ce > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-61ca360c{background-color:#dffff2;}.gb-container-61ca360c > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-61ca360c a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-61ca360c > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-445db22b{background-color:#dffff2;}.gb-container-445db22b > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-445db22b a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-445db22b > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-13c60ff7{background-color:#dffff2;}.gb-container-13c60ff7 > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-13c60ff7 a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-13c60ff7 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-0e2e08dc{background-color:#dffff2;}.gb-container-0e2e08dc > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-0e2e08dc a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-0e2e08dc > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-9720a945{background-color:#dffff2;}.gb-container-9720a945 > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-9720a945 a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-9720a945 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-8020012e{background-color:#dffff2;}.gb-container-8020012e > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-8020012e a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-8020012e > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-24633f03{background-color:#dffff2;}.gb-container-24633f03 > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-24633f03 a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-24633f03 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-a3a27347{background-color:#dffff2;}.gb-container-a3a27347 > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-a3a27347 a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-a3a27347 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-5e7f7277{background-color:#dffff2;}.gb-container-5e7f7277 > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-5e7f7277 a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-5e7f7277 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-552340a8{background-color:#dffff2;}.gb-container-552340a8 > .gb-inside-container{padding:42px 17px 12px 40px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-container-552340a8 a{color:#0626e5;}.gb-grid-wrapper > .gb-grid-column-552340a8 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-1ef25c5a{margin-top:100px;background-color:#1f3d4d;position:relative;overflow:hidden;}.gb-container-1ef25c5a:before{content:"";background-image:url(https://greenbookglobal.com/travel-the-world/wp-content/uploads/2020/09/Tropical-vacation-2048x1536-2.jpg);background-repeat:no-repeat;background-position:right center;background-size:cover;z-index:0;position:absolute;top:0;right:0;bottom:0;left:0;transition:inherit;pointer-events:none;opacity:0.1;}.gb-container-1ef25c5a > .gb-inside-container{padding:120px 20px;max-width:1240px;margin-left:auto;margin-right:auto;z-index:1;position:relative;}.gb-grid-wrapper > .gb-grid-column-1ef25c5a > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-1ef25c5a.gb-has-dynamic-bg:before{background-image:var(--background-url);}.gb-container-1ef25c5a.gb-no-dynamic-bg:before{background-image:none;}.gb-container-6c3a1c15{text-align:left;}.gb-container-6c3a1c15 > .gb-inside-container{padding:0;}.gb-grid-wrapper > .gb-grid-column-6c3a1c15{width:45%;}.gb-grid-wrapper > .gb-grid-column-6c3a1c15 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-e4f0b062{text-align:left;}.gb-container-e4f0b062 > .gb-inside-container{padding:0;}.gb-grid-wrapper > .gb-grid-column-e4f0b062{width:20%;}.gb-grid-wrapper > .gb-grid-column-e4f0b062 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-a261fa04 > .gb-inside-container{padding:0;}.gb-grid-wrapper > .gb-grid-column-a261fa04{width:15%;}.gb-grid-wrapper > .gb-grid-column-a261fa04 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-99af9301{margin-top:20px;border-top:1px solid rgba(255, 255, 255, 0.4);}.gb-container-99af9301 > .gb-inside-container{padding:60px 0 0;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-grid-wrapper > .gb-grid-column-99af9301 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-f1168fc8 > .gb-inside-container{padding:0;}.gb-grid-wrapper > .gb-grid-column-f1168fc8{width:50%;}.gb-grid-wrapper > .gb-grid-column-f1168fc8 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-4dc7c6a0 > .gb-inside-container{padding:0;}.gb-grid-wrapper > .gb-grid-column-4dc7c6a0{width:50%;}.gb-grid-wrapper > .gb-grid-column-4dc7c6a0 > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-ef7545ed{font-size:14px;margin-top:20px;border-radius:5px;border:1px solid;background-color:#f7f9fa;}.gb-container-ef7545ed > .gb-inside-container{padding:20px;max-width:1200px;margin-left:auto;margin-right:auto;}.gb-grid-wrapper > .gb-grid-column-ef7545ed > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-639f433c > .gb-inside-container{padding:0;}.gb-grid-wrapper > .gb-grid-column-639f433c{width:15%;}.gb-grid-wrapper > .gb-grid-column-639f433c > .gb-container{display:flex;flex-direction:column;height:100%;}.gb-container-42c801e1 > .gb-inside-container{padding:0;}.gb-grid-wrapper > .gb-grid-column-42c801e1{width:85%;}.gb-grid-wrapper > .gb-grid-column-42c801e1 > .gb-container{display:flex;flex-direction:column;height:100%;}h2.gb-headline-5c2180bf{text-align:center;}h4.gb-headline-a8058820{display:flex;align-items:flex-start;padding:20px 160px 40px 80px;margin-bottom:0px;}h4.gb-headline-a8058820 .gb-icon{line-height:0;color:#66ccaa;padding-right:1em;}h4.gb-headline-a8058820 .gb-icon svg{width:2em;height:2em;fill:currentColor;}h2.gb-headline-6fd79b89{text-align:center;}p.gb-headline-27cb083a a{color:#000000;}p.gb-headline-27cb083a a:hover{color:#7bdcb5;}p.gb-headline-143cfe49 a{color:#000000;}p.gb-headline-143cfe49 a:hover{color:#7bdcb5;}p.gb-headline-16e024eb a{color:#000000;}p.gb-headline-16e024eb a:hover{color:#7bdcb5;}p.gb-headline-9e917682 a{color:#000000;}p.gb-headline-9e917682 a:hover{color:#7bdcb5;}p.gb-headline-0359090c a{color:#000000;}p.gb-headline-0359090c a:hover{color:#7bdcb5;}p.gb-headline-62e17633 a{color:#000000;}p.gb-headline-62e17633 a:hover{color:#7bdcb5;}p.gb-headline-03bf30a0 a{color:#000000;}p.gb-headline-03bf30a0 a:hover{color:#7bdcb5;}p.gb-headline-84a7abd5 a{color:#000000;}p.gb-headline-84a7abd5 a:hover{color:#7bdcb5;}p.gb-headline-9dc041dc a{color:#000000;}p.gb-headline-9dc041dc a:hover{color:#7bdcb5;}p.gb-headline-64bd0b22 a{color:#000000;}p.gb-headline-64bd0b22 a:hover{color:#7bdcb5;}p.gb-headline-b9b35dce a{color:#000000;}p.gb-headline-b9b35dce a:hover{color:#7bdcb5;}p.gb-headline-dd1ded3e{display:inline-block;font-size:15px;letter-spacing:0.1em;font-weight:700;text-transform:uppercase;text-align:center;border-bottom:.5px solid rgba(255, 255, 255, 0.4);color:#ffffff;}p.gb-headline-dd1ded3e a{color:#ffffff;}p.gb-headline-dd1ded3e a:hover{color:#66ccaa;}p.gb-headline-d4deedee{font-size:14px;font-weight:normal;margin-bottom:10px;color:#ffffff;}p.gb-headline-d4deedee a{color:#ffffff;}p.gb-headline-d4deedee a:hover{color:#66ccaa;}p.gb-headline-729de3c9{font-size:14px;font-weight:normal;margin-bottom:10px;color:#ffffff;}p.gb-headline-729de3c9 a{color:#ffffff;}p.gb-headline-729de3c9 a:hover{color:#66ccaa;}p.gb-headline-8f70ba1d{font-size:14px;font-weight:normal;margin-bottom:10px;color:#ffffff;}p.gb-headline-8f70ba1d a{color:#ffffff;}p.gb-headline-8f70ba1d a:hover{color:#66ccaa;}p.gb-headline-bfac29ec{font-size:14px;font-weight:normal;margin-bottom:10px;color:#ffffff;}p.gb-headline-bfac29ec a{color:#ffffff;}p.gb-headline-bfac29ec a:hover{color:#66ccaa;}p.gb-headline-63d9f9f2{font-size:14px;font-weight:normal;margin-bottom:10px;color:#ffffff;}p.gb-headline-63d9f9f2 a{color:#ffffff;}p.gb-headline-63d9f9f2 a:hover{color:#66ccaa;}p.gb-headline-31d28084{font-size:14px;font-weight:normal;margin-bottom:10px;color:#ffffff;}p.gb-headline-31d28084 a{color:#ffffff;}p.gb-headline-31d28084 a:hover{color:#66ccaa;}p.gb-headline-156ef4d7{font-size:14px;font-weight:normal;color:#ffffff;}p.gb-headline-39d67d3e{font-size:14px;text-align:right;color:#ffffff;}p.gb-headline-39d67d3e a{color:#ffffff;}p.gb-headline-39d67d3e a:hover{color:#66ccaa;}p.gb-headline-7b3c8a97{font-size:20px;font-weight:700;margin-bottom:5px;}.gb-grid-wrapper-89056a31{display:flex;flex-wrap:wrap;align-items:center;}.gb-grid-wrapper-89056a31 > .gb-grid-column{box-sizing:border-box;padding-left:0px;padding-bottom:40px;}.gb-grid-wrapper-c04d9032{display:flex;flex-wrap:wrap;margin-left:-30px;}.gb-grid-wrapper-c04d9032 > .gb-grid-column{box-sizing:border-box;padding-left:30px;}.gb-grid-wrapper-d0eb65d5{display:flex;flex-wrap:wrap;align-items:flex-start;margin-left:-30px;}.gb-grid-wrapper-d0eb65d5 > .gb-grid-column{box-sizing:border-box;padding-left:30px;}.gb-button-wrapper{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:flex-start;clear:both;}.gb-button-wrapper-9db70a0e{justify-content:flex-end;}.gb-button-wrapper a.gb-button-4a9605a8{display:inline-flex;align-items:center;justify-content:center;text-align:center;margin-right:30px;color:#ffffff;text-decoration:none;}.gb-button-wrapper a.gb-button-4a9605a8:hover, .gb-button-wrapper a.gb-button-4a9605a8:active, .gb-button-wrapper a.gb-button-4a9605a8:focus{color:#66ccaa;}.gb-button-wrapper a.gb-button-4a9605a8 .gb-icon{line-height:0;}.gb-button-wrapper a.gb-button-4a9605a8 .gb-icon svg{width:0.9em;height:0.9em;fill:currentColor;}.gb-button-wrapper a.gb-button-aaba9764{display:inline-flex;align-items:center;justify-content:center;text-align:center;margin-right:30px;color:#ffffff;text-decoration:none;}.gb-button-wrapper a.gb-button-aaba9764:hover, .gb-button-wrapper a.gb-button-aaba9764:active, .gb-button-wrapper a.gb-button-aaba9764:focus{color:#66ccaa;}.gb-button-wrapper a.gb-button-aaba9764 .gb-icon{line-height:0;}.gb-button-wrapper a.gb-button-aaba9764 .gb-icon svg{width:0.8em;height:0.8em;fill:currentColor;}.gb-button-wrapper a.gb-button-6c4b393d{display:inline-flex;align-items:center;justify-content:center;text-align:center;margin-right:30px;color:#ffffff;text-decoration:none;}.gb-button-wrapper a.gb-button-6c4b393d:hover, .gb-button-wrapper a.gb-button-6c4b393d:active, .gb-button-wrapper a.gb-button-6c4b393d:focus{color:#66ccaa;}.gb-button-wrapper a.gb-button-6c4b393d .gb-icon{line-height:0;}.gb-button-wrapper a.gb-button-6c4b393d .gb-icon svg{width:0.9em;height:0.9em;fill:currentColor;}.gb-button-wrapper a.gb-button-ed15d177{display:inline-flex;align-items:center;justify-content:center;text-align:center;color:#ffffff;text-decoration:none;}.gb-button-wrapper a.gb-button-ed15d177:hover, .gb-button-wrapper a.gb-button-ed15d177:active, .gb-button-wrapper a.gb-button-ed15d177:focus{color:#66ccaa;}.gb-button-wrapper a.gb-button-ed15d177 .gb-icon{line-height:0;}.gb-button-wrapper a.gb-button-ed15d177 .gb-icon svg{width:0.9em;height:0.9em;fill:currentColor;}@media (max-width: 1024px) {.gb-container-6c3a1c15{text-align:center;}.gb-grid-wrapper > .gb-grid-column-6c3a1c15{width:25%;}.gb-grid-wrapper > .gb-grid-column-e4f0b062{width:25%;}.gb-grid-wrapper > .gb-grid-column-a261fa04{width:25%;}}@media (max-width: 767px) {.gb-container-1ef25c5a > .gb-inside-container{padding:120px 30px;}.gb-container-6c3a1c15{text-align:center;margin-bottom:30px;}.gb-grid-wrapper > .gb-grid-column-6c3a1c15{width:100%;}.gb-container-e4f0b062{border:0px solid #ffffff;}.gb-grid-wrapper > .gb-grid-column-e4f0b062{width:100%;}.gb-container-a261fa04{margin-top:20px;}.gb-grid-wrapper > .gb-grid-column-a261fa04{width:100%;}.gb-grid-wrapper > .gb-grid-column-f1168fc8{width:100%;}.gb-grid-wrapper > .gb-grid-column-4dc7c6a0{width:100%;}.gb-grid-wrapper > .gb-grid-column-ef7545ed{width:100%;}.gb-grid-wrapper > .gb-grid-column-639f433c{width:100%;}.gb-grid-wrapper > .gb-grid-column-42c801e1{width:100%;}h4.gb-headline-a8058820{padding:20px 20px 40px;}p.gb-headline-39d67d3e{text-align:left;}.gb-grid-wrapper-89056a31 > .gb-grid-column{padding-bottom:40px;}.gb-button-wrapper-9db70a0e{justify-content:flex-start;}}.gb-container .wp-block-image img{vertical-align:middle;}.gb-grid-wrapper .wp-block-image{margin-bottom:0;}.gb-highlight{background:none;}
+/*# sourceURL=generateblocks-inline-css */
+</style>
+<link rel='stylesheet' id='generate-offside-css' href='https://greenbookglobal.com/travel-the-world/wp-content/plugins/gp-premium/menu-plus/functions/css/offside.min.css?ver=2.4.0' media='all' />
+<style id='generate-offside-inline-css'>
+:root{--gp-slideout-width:265px;}.slideout-navigation.main-navigation{background-color:#1f3d4d;}.slideout-navigation.main-navigation .main-nav ul li a{color:#ffffff;font-weight:700;text-transform:uppercase;font-size:25px;}.slideout-navigation.main-navigation ul ul{background-color:#1f3d4d;}.slideout-navigation.main-navigation .main-nav ul ul li a{color:#ffffff;}.slideout-navigation.main-navigation.do-overlay .main-nav ul ul li a{font-size:1em;font-size:24px;}@media (max-width:768px){.slideout-navigation.main-navigation .main-nav ul li a{font-size:16px;}.slideout-navigation.main-navigation .main-nav ul ul li a{font-size:15px;}}.slideout-navigation.main-navigation .main-nav ul li:not([class*="current-menu-"]):hover > a, .slideout-navigation.main-navigation .main-nav ul li:not([class*="current-menu-"]):focus > a, .slideout-navigation.main-navigation .main-nav ul li.sfHover:not([class*="current-menu-"]) > a{color:#66ccaa;background-color:#1f3d4d;}.slideout-navigation.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):hover > a, .slideout-navigation.main-navigation .main-nav ul ul li:not([class*="current-menu-"]):focus > a, .slideout-navigation.main-navigation .main-nav ul ul li.sfHover:not([class*="current-menu-"]) > a{color:#66ccaa;background-color:#1f3d4d;}.slideout-navigation.main-navigation .main-nav ul li[class*="current-menu-"] > a{color:#ffffff;background-color:#1f3d4d;}.slideout-navigation.main-navigation .main-nav ul ul li[class*="current-menu-"] > a{color:#ffffff;background-color:#1f3d4d;}.slideout-navigation, .slideout-navigation a{color:#ffffff;}.slideout-navigation button.slideout-exit{color:#ffffff;padding-left:24px;padding-right:24px;}.slide-opened nav.toggled .menu-toggle:before{display:none;}@media (max-width: 1024px){.menu-bar-item.slideout-toggle{display:none;}}
+/*# sourceURL=generate-offside-inline-css */
+</style>
+<script id="sgr-js-extra">
+var sgr = {"sgr_site_key":"6LdwvjEeAAAAAFKSQOkxJRuqyGaLs4ZgOQGDPGsi"};
+//# sourceURL=sgr-js-extra
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-content/cache/min/1/travel-the-world/wp-content/plugins/simple-google-recaptcha/sgr.js?ver=1768027830" id="sgr-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-content/cache/min/1/travel-the-world/wp-content/plugins/gpt3-ai-content-generator/public/js/wp-ai-content-generator-public.js?ver=1768027830" id="wp-ai-content-generator-js" defer></script>
+<link rel="https://api.w.org/" href="https://greenbookglobal.com/travel-the-world/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://greenbookglobal.com/travel-the-world/wp-json/wp/v2/posts/4523" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://greenbookglobal.com/travel-the-world/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9" />
+<link rel='shortlink' href='https://greenbookglobal.com/travel-the-world/?p=4523' />
+<meta name="cdp-version" content="1.4.6" />
+
+
+<script type="rocketlazyloadscript">
+  (function (s, t, a, y, twenty, two) {
+    s.Stay22 = s.Stay22 || {};
+    // Just fill out your configs here
+    s.Stay22.params = {
+    aid: "greenbookglobal",
+excludes: ["vrbo","booking","expedia","tripadvisor","hotelscombined","hotelscom"]
+    };
+    // Leave this part as-is;
+    twenty = t.createElement(a);
+    two = t.getElementsByTagName(a)[0];
+    twenty.async = 1;
+    twenty.src = y;
+    two.parentNode.insertBefore(twenty, two);
+  })(window, document, "script", "https://scripts.stay22.com/letmeallez.js");
+</script>
+
+
+
+<script type="rocketlazyloadscript" data-ad-client="ca-pub-2075327840282195" async data-rocket-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>            <!-- MailerLite Universal -->
+            <script type="rocketlazyloadscript">
+                (function (m, a, i, l, e, r) {
+                    m['MailerLiteObject'] = e;
+
+                    function f() {
+                        var c = {a: arguments, q: []};
+                        var r = this.push(c);
+                        return "number" != typeof r ? r : f.bind(c.q);
+                    }
+
+                    f.q = f.q || [];
+                    m[e] = m[e] || f.bind(f.q);
+                    m[e].q = m[e].q || f.q;
+                    r = a.createElement(i);
+                    var _ = a.getElementsByTagName(i)[0];
+                    r.async = 1;
+                    r.src = l + '?' + (~~(new Date().getTime() / 10000000));
+                    _.parentNode.insertBefore(r, _);
+                })(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
+
+                var ml_account = ml('accounts', '1471284', 'a0f8b7s3c7', 'load');
+            </script>
+            <!-- End MailerLite Universal -->
+        
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- GTM Container placement set to automatic -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var dataLayer_content = {"pagePostType":"post","pagePostType2":"single-post","pageCategory":["all-posts","black-travel","travel-guides"],"pageAttributes":["home","technology"],"pagePostAuthor":"Lawrence Phillips"};
+	dataLayer.push( dataLayer_content );
+</script>
+<script type="rocketlazyloadscript" data-cfasync="false" data-pagespeed-no-defer>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-576TBVLN');
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com -->		<!-- HappyForms global container -->
+		<script type="rocketlazyloadscript" data-rocket-type="text/javascript">HappyForms = {};</script>
+		<!-- End of HappyForms global container -->
+		<link rel="pingback" href="https://greenbookglobal.com/travel-the-world/xmlrpc.php">
+<meta name="generator" content="Elementor 3.21.8; features: e_optimized_assets_loading, e_optimized_css_loading, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-auto">
+<style>.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/cropped-Green-Book-International-1-scaled-1-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/cropped-Green-Book-International-1-scaled-1-192x192.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/cropped-Green-Book-International-1-scaled-1-180x180.jpg" />
+<meta name="msapplication-TileImage" content="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/cropped-Green-Book-International-1-scaled-1-270x270.jpg" />
+		<style id="wp-custom-css">
+			/* GeneratePress Site CSS */ /* page title yellow icon size */
+
+.title-icon {
+	height: 22px;
+}
+
+/* h1 title letter spacing */
+
+h1 {
+  letter-spacing: 1px;
+}
+
+/* main menu letter spacing */
+
+.main-navigation a {
+  letter-spacing: 1px;
+}
+
+/* navigation button */
+
+.main-navigation:not(.slideout-navigation) .main-nav li.nav-button a {
+  color: #ffffff;
+  border: 3px solid #66ccaa;
+  padding: 8px 18px;
+  border-radius: 2px;
+  margin-left: 24px; /* space to the left of button */
+  transition: all 0.6s ease 0s;
+} 
+
+.main-navigation:not(.slideout-navigation) .main-nav li.nav-button a:hover {
+	color: #66ccaa;
+	border: 3px solid #ffffff;
+}
+
+/* add padding around mobile navigation header */
+
+.mobile-header-navigation {
+  padding: 10px;
+}
+
+/* gp and wp show post meta styling */
+
+.entry-meta, .wp-show-posts-entry-meta, .wp-show-posts-entry-meta a {
+	margin-top: 6px !important;
+	color: #666666 !important;
+}
+
+/* mailchimp form styling */
+
+.mc4wp-form-fields  {
+	text-align: center;
+}
+
+.mc4wp-form input[type=text], .mc4wp-form input[type=email] {
+	line-height: 40px;
+	width: 260px;
+	border: none;
+	border-radius: 0px;
+}
+ 
+.mc4wp-form input[type=submit] {
+	color: #ffffff;
+	background-color: rgba(102,204,170,1.0);	
+	line-height: 40px;
+	border: none;
+  border-radius: 0px;
+  transition: all 0.5s ease 0s;
+}
+
+.mc4wp-form input[type=submit]:hover {
+	color: #ffffff;
+	background-color: rgba(102,204,170,0.9);	
+}
+
+@media (max-width: 768px) {
+.mc4wp-form input[type=text], .mc4wp-form input[type=email], .mc4wp-form input[type=submit] {
+		width: 100%;
+		margin: 2px;
+	}
+
+
+	
+} 
+/*Logo size for Mobile*/
+
+@media screen and (max-width: 600px) {
+.site-logo {
+   width: auto;
+	height: 14px;
+ }
+}
+
+.wp-show-posts-entry-meta.wp-show-posts-entry-meta-below-title.post-meta-inline{
+	display: none !important;
+}
+
+/* End GeneratePress Site CSS */		</style>
+		</head>
+
+<body class="wp-singular post-template-default single single-post postid-4523 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-generatepress post-image-above-header post-image-aligned-center slideout-enabled slideout-mobile sticky-menu-fade no-sidebar nav-float-right one-container header-aligned-left dropdown-hover elementor-default elementor-kit-4997" itemtype="https://schema.org/Blog" itemscope>
+<script data-cfasync="false" data-no-defer="1" data-no-minify="1" data-no-optimize="1">if(typeof ewww_webp_supported==="undefined"){var ewww_webp_supported=!1}if(ewww_webp_supported){document.body.classList.add("webp-support")}</script>
+	
+<!-- GTM Container placement set to automatic -->
+<!-- Google Tag Manager (noscript) -->
+				<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-576TBVLN" height="0" width="0" style="display:none;visibility:hidden" aria-hidden="true"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->	<div class="innerModileAdsSection"></div>
+	
+<!-- GTM Container placement set to automatic -->
+<!-- Google Tag Manager (noscript) --><div class="header-wrap"><a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>		<header class="site-header has-inline-mobile-toggle" id="masthead" aria-label="Site"  itemtype="https://schema.org/WPHeader" itemscope>
+			<div class="inside-header grid-container">
+				<div class="site-logo">
+					<a href="https://greenbookglobal.com/travel-the-world/" rel="home">
+						<img fetchpriority="high"  class="header-image is-logo-image ewww_webp" alt="Blog" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  width="420" height="304" data-src-img="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png" data-src-webp="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png.webp" data-srcset-webp="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png.webp 1x, https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png.webp 2x" data-srcset-img="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png 1x, https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png 2x" data-eio="j" /><noscript><img fetchpriority="high"  class="header-image is-logo-image" alt="Blog" src="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png" srcset="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png 1x, https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-1.png 2x" width="420" height="304" /></noscript>
+					</a>
+				</div>	<nav class="main-navigation mobile-menu-control-wrapper" id="mobile-menu-control-wrapper" aria-label="Mobile Toggle">
+				<button data-nav="site-navigation" class="menu-toggle" aria-controls="generate-slideout-menu" aria-expanded="false">
+			<span class="gp-icon icon-menu-bars"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z" /></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z" /></svg></span><span class="screen-reader-text">Menu</span>		</button>
+	</nav>
+			<nav class="main-navigation sub-menu-right" id="site-navigation" aria-label="Primary"  itemtype="https://schema.org/SiteNavigationElement" itemscope>
+			<div class="inside-navigation grid-container">
+								<button class="menu-toggle" aria-controls="generate-slideout-menu" aria-expanded="false">
+					<span class="gp-icon icon-menu-bars"><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z" /></svg><svg viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z" /></svg></span><span class="screen-reader-text">Menu</span>				</button>
+				<div id="primary-menu" class="main-nav"><ul id="menu-main-menu" class=" menu sf-menu"><li id="menu-item-5225" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5225"><a href="https://greenbookglobal.com">Home</a></li>
+<li id="menu-item-6072" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-6072"><a href="https://greenbookglobal.com">Black Travel<span role="presentation" class="dropdown-menu-toggle"><span class="gp-icon icon-arrow"><svg viewBox="0 0 330 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M305.913 197.085c0 2.266-1.133 4.815-2.833 6.514L171.087 335.593c-1.7 1.7-4.249 2.832-6.515 2.832s-4.815-1.133-6.515-2.832L26.064 203.599c-1.7-1.7-2.832-4.248-2.832-6.514s1.132-4.816 2.832-6.515l14.162-14.163c1.7-1.699 3.966-2.832 6.515-2.832 2.266 0 4.815 1.133 6.515 2.832l111.316 111.317 111.316-111.317c1.7-1.699 4.249-2.832 6.515-2.832s4.815 1.133 6.515 2.832l14.162 14.163c1.7 1.7 2.833 4.249 2.833 6.515z" /></svg></span></span></a>
+<ul class="sub-menu">
+	<li id="menu-item-6070" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6070"><a href="https://greenbookglobal.com">Black Travel Tips</a></li>
+	<li id="menu-item-6071" class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-6071"><a href="https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/" aria-current="page">Black Travel Guide</a></li>
+</ul>
+</li>
+<li id="menu-item-4459" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4459"><a href="https://greenbookglobal.com/book-trip/">Book Trip</a></li>
+<li id="menu-item-6279" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6279"><a href="https://greenbookglobal.com/travel-the-world/category/sundown-towns/">Sundown Towns</a></li>
+<li id="menu-item-3570" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-has-children menu-item-3570"><a href="https://greenbookglobal.com/travel-the-world/blog/">Explore<span role="presentation" class="dropdown-menu-toggle"><span class="gp-icon icon-arrow"><svg viewBox="0 0 330 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M305.913 197.085c0 2.266-1.133 4.815-2.833 6.514L171.087 335.593c-1.7 1.7-4.249 2.832-6.515 2.832s-4.815-1.133-6.515-2.832L26.064 203.599c-1.7-1.7-2.832-4.248-2.832-6.514s1.132-4.816 2.832-6.515l14.162-14.163c1.7-1.699 3.966-2.832 6.515-2.832 2.266 0 4.815 1.133 6.515 2.832l111.316 111.317 111.316-111.317c1.7-1.699 4.249-2.832 6.515-2.832s4.815 1.133 6.515 2.832l14.162 14.163c1.7 1.7 2.833 4.249 2.833 6.515z" /></svg></span></span></a>
+<ul class="sub-menu">
+	<li id="menu-item-4803" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-4803"><a href="https://greenbookglobal.com/travel-the-world/category/travel-guides/">Travel Guides</a></li>
+	<li id="menu-item-4804" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4804"><a href="https://greenbookglobal.com/travel-the-world/category/black-owned/">Black-Owned</a></li>
+	<li id="menu-item-4805" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4805"><a href="https://greenbookglobal.com/travel-the-world/category/locations/">Locations</a></li>
+	<li id="menu-item-4807" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4807"><a href="https://greenbookglobal.com/travel-the-world/category/adventure/">Adventure</a></li>
+	<li id="menu-item-4806" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4806"><a href="https://greenbookglobal.com/travel-the-world/category/food/">Food</a></li>
+	<li id="menu-item-5085" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5085"><a href="https://greenbookglobal.com/travel-the-world/category/all-posts/">All Posts</a></li>
+</ul>
+</li>
+<li id="menu-item-4781" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4781"><a href="https://greenbookglobal.com/travel-the-world/contact/">Our Story</a></li>
+<li id="menu-item-3574" class="nav-button menu-item menu-item-type-post_type menu-item-object-page menu-item-3574"><a href="https://greenbookglobal.com/travel-the-world/subscribe/">Subscribe</a></li>
+</ul></div>			</div>
+		</nav>
+					<div class="header-widget">
+				<aside id="text-2" class="widget inner-padding widget_text">			<div class="textwidget"></div>
+		</aside>			</div>
+						</div>
+		</header>
+		</div><!-- .header-wrap --><div class="page-hero">
+					<div class="inside-page-hero grid-container grid-parent">
+						<h1>
+<img src="https://gpsites.co/stream/wp-content/uploads/sites/77/yellow-icon.svg" class="title-icon" alt="page title icon"> The Ultimate Guide to Black Travel
+</h1>	
+					</div>
+				</div>
+	<div class="site grid-container container hfeed" id="page">
+				<div class="site-content" id="content">
+			
+	<div class="content-area" id="primary">
+		<main class="site-main" id="main">
+			
+<article id="post-4523" class="post-4523 post type-post status-publish format-standard has-post-thumbnail category-all-posts category-black-travel category-travel-guides tag-home tag-technology" itemtype="https://schema.org/CreativeWork" itemscope>
+	<div class="inside-article">
+		
+		<div class="entry-content" itemprop="text">
+			<div class="gb-container gb-container-03f54485"><div class="gb-inside-container">
+
+<h2 class="gb-headline gb-headline-5c2180bf gb-headline-text">The Challenges of Black Travel</h2>
+
+
+
+<p>One of the most underrepresented and ignored categories in travel is that of Black Travel.&nbsp; There is a willful exclusion of black travelers in the tourism industry. For example, consider your typical advertisements related to travel. In most cases, you will see white or fair-skinned models in marketing materials but very infrequently will you see those with darker skin. Although black travelers may patronize the very same businesses as their white counterparts, they are not given the same attention.&nbsp;<br>&nbsp;<br>Travel is important.&nbsp; Traveling is an opportunity to see the world, explore different cultures, and learn more about yourself than you ever thought you could imagine. Black people deserve to be able to travel and have their needs met just like other demographics.&nbsp;<br>&nbsp;<br>When 2000+ black travelers were asked “Why do you travel?” in our Black Travel Survey, our top response was Mental Health.&nbsp;<br>&nbsp;<br></p>
+
+
+
+<h4 class="gb-headline gb-headline-a8058820"><span class="gb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 28"><path d="M30.6 28c-5.2 0-9.4-4.2-9.4-9.4C21.2 8 25.5 1 25.7.7l.5-.7H33l-.6 2C31.9 3.9 31 7.4 31 8.6v.6c2.4.1 4.6 1.1 6.3 2.8 1.7 1.8 2.7 4.1 2.7 6.6 0 5.2-4.2 9.4-9.4 9.4zM27.9 3.1c-1 2-3.6 7.7-3.6 15.5 0 3.4 2.8 6.2 6.2 6.2s6.2-2.8 6.2-6.2-2.7-6.2-6.1-6.2h-.1c-1.4 0-2-.7-2.4-1.3-.4-.7-.4-1.5-.4-2.4 0-1.2.6-3.7 1-5.5l-.8-.1zm2.7 6.1zM9.4 28C4.2 28 0 23.8 0 18.6 0 8 4.3 1 4.5.7l.4-.7h6.8l-.6 2c-.6 1.9-1.4 5.5-1.4 6.6v.6c2.4.1 4.6 1.1 6.3 2.8 1.7 1.8 2.7 4.1 2.7 6.6 0 5.2-4.2 9.4-9.3 9.4zM6.7 3.1c-1 2-3.6 7.7-3.6 15.5 0 3.4 2.8 6.2 6.2 6.2s6.2-2.8 6.2-6.2-2.7-6.2-6.1-6.2c-1.4 0-2-.7-2.4-1.3-.4-.7-.4-1.5-.4-2.4 0-1.2.6-3.7 1-5.5l-.9-.1zm2.7 6.1z"></path></svg></span><span class="gb-headline-text">58% Of Black Travelers surveyed travel to help maintain Mental Health </span></h4>
+
+
+
+<p>&nbsp;<br>We know travel is fun but it is also meaningful, in particular for the Black community. Not only is it one of life’s greatest educators but black people use it for both emotional and psychological health.&nbsp;</p>
+
+
+
+<p>It is Green Book&nbsp;Global’s&nbsp;ultimate vision, to <strong>inspire and empower black travelers to confidently explore the world</strong>. In order to help achieve this, we have created the Ultimate Black Travel Guide.&nbsp; We will ensure that black travelers are well equipped for seeing all that this world has to offer.&nbsp;</p>
+
+
+
+<h2 class="gb-headline gb-headline-6fd79b89 gb-headline-text">Table of Contents<br></h2>
+
+
+
+<p class="gb-headline gb-headline-27cb083a gb-headline-text"><strong>01 – <a href="#what-is-the-black-travel-movement">What is the Black Travel Movement</a></strong></p>
+
+
+
+<p class="gb-headline gb-headline-143cfe49 gb-headline-text">0<strong>2 – </strong><a href="#best-cities-for-black-people"><strong>Best Cities for Black People</strong>&nbsp;</a></p>
+
+
+
+<p class="gb-headline gb-headline-16e024eb gb-headline-text"><strong>03 – <a href="#worst-destinations-for-the-african-american-traveler">Worst Destinations for the African American Traveler</a></strong>&nbsp;</p>
+
+
+
+<p class="gb-headline gb-headline-9e917682 gb-headline-text"><strong>04 – <a href="#black-travel-survey-covid-impact">Black Travel Survey &amp; COVID Impact</a></strong>&nbsp;</p>
+
+
+
+<p class="gb-headline gb-headline-0359090c gb-headline-text"><strong>05 –&nbsp;</strong><a href="#cheap-places-to-travel"><strong>Cheap Places to Travel</strong>&nbsp;</a></p>
+
+
+
+<p class="gb-headline gb-headline-62e17633 gb-headline-text"><strong>06 –&nbsp;<a href="#cultural-nuances-of-black-travel">Cultural Nuances of Black Travel</a></strong>&nbsp;</p>
+
+
+
+<p class="gb-headline gb-headline-03bf30a0 gb-headline-text"><strong>07 – </strong><a href="#black-travel-groups"><strong>Black Travel Groups</strong>&nbsp;</a></p>
+
+
+
+<p class="gb-headline gb-headline-84a7abd5 gb-headline-text"><strong>08 – <a href="#dope-destinations-for-adventure-travel">Dope Destinations for Adventure Travel</a></strong>&nbsp;</p>
+
+
+
+<p class="gb-headline gb-headline-9dc041dc gb-headline-text"><strong>09 – <a href="#black-bloggers-you-need-to-know">Black Bloggers That You Need to Know</a></strong>&nbsp;</p>
+
+
+
+<p class="gb-headline gb-headline-64bd0b22 gb-headline-text"><strong>10–&nbsp;</strong><a href="#foodie-destinations-for-black-traveler"><strong>Foodie Destinations for the Black Traveler</strong>&nbsp;</a></p>
+
+
+
+<p class="gb-headline gb-headline-b9b35dce gb-headline-text"><strong>11– <a href="#green-book-global-s-black-travel-data-and-tech">Black Travel Tech. An offering of Green Book Global</a>&nbsp;</strong>&nbsp;</p>
+
+
+<div class="gb-container gb-container-2bc51b12"><div class="gb-inside-container">
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="what-is-the-black-travel-movement">What is the Black Travel Movement?</h2>
+
+
+
+<p><strong>What is the Black Travel Movement?</strong>&nbsp;</p>
+
+
+
+<p>The assumption for some is that black people do not travel. This could not be further from the truth. In fact, black travelers, specifically African Americans, spend over $100 billion dollars in travel each year.&nbsp; This is up from $64 billion dollars in just 4 years.&nbsp; The major contributing factor to this is&nbsp;the&nbsp;Black Travel Movement.&nbsp;</p>
+
+
+
+<p>What is the Black Travel Movement? Despite this massive dollar spend how can the pervading narrative that black people do not travel still exist?&nbsp; To better understand this, it requires the unraveling of the evolution of the Black Travel Movement.&nbsp; To do this we have to look at 3 main areas:&nbsp;</p>
+
+
+
+<p>1)&nbsp;<strong>The History of Black Travel Movement: Where It</strong> Started &#8211;&nbsp;The concerns of Traveling While Black has been a topic of conversation in the black community for decades if not centuries. However, in the 1930s, specifically in the United States, the Green Book was created to serve as the “Black Travel Bible”.&nbsp;</p>
+
+
+
+<p><strong>2)&nbsp;</strong><strong>T</strong><strong>he Modern-Day Black Travel Movement&nbsp;</strong>– There has definitely been a shift in the black community in recent years to spend more time and money on travel.&nbsp; Why? Who played a major role in this happening?&nbsp; What caused the onset of this recent Black Travel Movement?&nbsp;&nbsp;</p>
+
+
+
+<p><strong>3) The Impact of the Black Travel Movement&nbsp;</strong>– The Black Travel Movement had no signs of slowing down.&nbsp; Black travelers&#8217; voices are being elevated and it is resulting in incremental changes within the travel industry.&nbsp; Influencers, Black Travel Groups, Black Social Media Pages, Black Travel Tech, etc. are all playing their role to ensure we have a seat at the table while also making a table of our own.&nbsp;</p>
+
+
+<div class="gb-container gb-container-a80a88ce alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Still curious? Click here to find out more about the&nbsp;<a href="https://greenbookglobal.com/travel-the-world/the-black-travel-movement/">Black Travel Movement</a></p>
+
+</div></div>
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="best-cities-for-black-people">Best Cities for Black People</h2>
+
+
+
+<p>As a Black Traveler, it is an unfortunate reality that there are some destinations that will be more welcoming than others based on the color of your skin.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+
+
+<p>It becomes even more complex when you start to break out “black” people as African American, African, Afro-Latinos, Afro-Europeans, Caribbean, etc.&nbsp; Black people are not monolithic and when you start to consider these sub-groups it is undeniable that some are more welcomed than others.&nbsp;</p>
+
+
+
+<p>We wanted to take all this into consideration and provide a list of Our Top 7 Cities for Black People when considering a destination to travel to.&nbsp;</p>
+
+
+<div class="gb-container gb-container-61ca360c alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Still curious? Click here to find out more about the&nbsp;<a href="https://greenbookglobal.com/travel-the-world/11-best-cities-for-black-people-in-2022/">Top 11 Cities for Black Singles in 2022</a>&nbsp;</p>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="worst-destinations-for-the-african-american-traveler">Worst Destinations for the African American Traveler</h2>
+
+
+
+<p>Just as there are great cities for Black Travelers there are also some ones that should be avoided.&nbsp;&nbsp;</p>
+
+
+
+<p>We have actually created a Destination Search Tool that can help in picking cities based on the threat of racism. The travel tool summarizes thousands of Traveling While Black experiences for hundreds of destinations and outputs a set of ratings and scores.&nbsp;</p>
+
+
+
+<p>Based on our findings, we have provided a list of 11 of the worst destinations for the African American Traveler.&nbsp;</p>
+
+
+<div class="gb-container gb-container-445db22b alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Still curious? Click here to find out more about the&nbsp;11 of the Worst Destinations for the African American Traveler&nbsp;</p>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="black-travel-survey-covid-impact">Black Travel Survey &amp; COVID Impact</h2>
+
+
+
+<p>The COVID pandemic has been horrible on a global scale but it has really hit the black community quite hard.   This pandemic has changed the way we will look at travel for the next decade.   Because of this, it was important for Green Book Global to capture the voice of black travelers so as the travel industry is reshaped black travelers are kept in mind.  We surveyed over 2000 black travelers and captured trends on all things travel including COVID.</p>
+
+
+<div class="gb-container gb-container-13c60ff7 alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Check out our&nbsp;<a href="https://greenbookglobal.com/product/black-travel-survey-2021/">Black Travel Survey: Trends and the Impact of COVID</a>&nbsp;for statistics, trends, and information all related to black travel.&nbsp;</p>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="cheap-places-to-travel">Cheap Places to Travel</h2>
+
+
+
+<p>Travel is an amazing phenomenon. Ibn Battuta said it best:&nbsp;&nbsp;<em>“</em><em>Traveling &#8211; It leaves your speechless, then turns you into a storyteller”</em>&nbsp;&nbsp;</p>
+
+
+
+<p>There are so many destinations to choose from but we understand that many of us are on a budget.&nbsp; As a result, we wanted to provide some destinations that are cheap but that are also still remarkable.&nbsp;</p>
+
+
+<div class="gb-container gb-container-0e2e08dc alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Still curious? Click here to find out more about the&nbsp;<a href="https://greenbookglobal.com/travel-the-world/best-cheap-places-to-travel/">13 Cheap Places To Travel in 2022</a>&nbsp;&nbsp;</p>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="cultural-nuances-of-black-travel">Cultural Nuances of Black Travel</h2>
+
+
+
+<p>“Love black people like you love our culture”. This is what comes to mind when thinking about the state of the black community.&nbsp;&nbsp;&nbsp;</p>
+
+
+
+<p>All too often, “others” will love our music, our fashion, our creativity, our swag, our culture, but don’t actually love black people. Because so many things about black culture transcend us, many destinations will have preconceived notions about black people.&nbsp;&nbsp;&nbsp;</p>
+
+
+
+<p>Television, radio, and the internet feed into those notions.&nbsp;So,&nbsp;when someone with limited real-life interactions with black travelers has an encounter, the experience can range from one of curiosity to downright disrespect.&nbsp; Therefore, we created a guide on 5 cultural nuances you should be aware of when exploring the world as a black traveler.&nbsp;</p>
+
+
+<div class="gb-container gb-container-9720a945 alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Still curious? Click here to find out more about the&nbsp;<a href="https://greenbookglobal.com/travel-the-world/nuances-of-traveling-while-black/">5 Cultural Nuances of Black Travel</a>&nbsp;</p>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="black-travel-groups">Black Travel Groups</h2>
+
+
+
+<p>Being part of a community of travelers that look like you and share similar interests will have a dramatic impact on any trip.&nbsp; This is a point that the travel industry has ignored as the black travel demographic has historically been excluded. As result, black people have banded together to create Black Travel Groups.&nbsp;</p>
+
+
+
+<p>Black Travel Groups create a safe space and provide a sense of community.&nbsp; It provides a vehicle for questions to be asked, authentic fears to be addressed, and a level of comfort knowing that you are exploring a destination with people that look like you.&nbsp; There is an assortment of Black Travel Groups that organize trips that range from luxury, adventure, to a really good turn-up!&nbsp;</p>
+
+
+
+<p>We have put together a list of our top 9 Black Travel Groups that can help provide you a sense of community as you get those passport stamps.&nbsp;</p>
+
+
+<div class="gb-container gb-container-8020012e alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Still curious? Click here to find out more about the&nbsp;27 Black Travel Groups to Follow in 2022&nbsp;&nbsp;</p>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="dope-destinations-for-adventure-travel">Dope Destinations for Adventure Travel</h2>
+
+
+
+<p>Who doesn’t like a bit of adventure?&nbsp; Depending on your risk tolerance, we outline destinations and activities that may give you severe heart palpitations to a&nbsp;tamer&nbsp;thrill-seeking experience.&nbsp;</p>
+
+
+
+<p>We have something for everyone in this list if you are looking for a bit of adventure travel.&nbsp;</p>
+
+
+<div class="gb-container gb-container-24633f03 alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Still curious? Click here to find out more about the&nbsp;<a href="https://greenbookglobal.com/travel-the-world/best-countries-for-adventure-travel/" target="_blank" rel="noreferrer noopener">Wild West: 7 Countries for Adventure in the Western Hemisphere</a>&nbsp;&nbsp;</p>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="black-bloggers-you-need-to-know">Black Bloggers You Need to Know</h2>
+
+
+
+<p>Bloggers and their content are a phenomenal way to learn more about destinations, amazing food, and the latest travel fashions for a trip.&nbsp; However, as the blogger market has become so saturated, it is increasingly difficult to find bloggers that are actually worth reading.&nbsp;&nbsp;&nbsp;</p>
+
+
+
+<p>Moreover, if you want to find bloggers that are relatable and are a person of color that adds another dimension. With this in mind, we created a list of Black Bloggers that you should follow that have a wide range of content that is perfect for you.&nbsp;</p>
+
+
+<div class="gb-container gb-container-a3a27347 alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<ul class="wp-block-list" id="block-414842b0-2da4-445e-b841-eeddb5753259">
+<li>Check out our list of&nbsp;53 of the Best Black Bloggers to Follow in 2022</li>
+
+
+
+<li>Also, discover more about our amazing&nbsp;Community of Black Creator</li>
+</ul>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="foodie-destinations-for-black-traveler">Foodie Destinations for Black Traveler</h2>
+
+
+
+<p>One very important aspect of Black Travel is the food!&nbsp; However, when looking at recommendations for food on platforms like Yelp,&nbsp;Tripadvisor&nbsp;etc. there is no way to determine if that person’s pallet is similar to your own.&nbsp;</p>
+
+
+
+<p>If we are being honest, the typical pallet of a black person is drastically different. Having our history tied to the Caribbean, Africa, Latin or South American Countries,&nbsp;and the&nbsp;“South” we are used to food having flavor.&nbsp;&nbsp;</p>
+
+
+
+<p>We have created a list of 10 cities that are perfect for the black travel&nbsp;pallet&nbsp;and will have you smacking your licks in delight. It is our goal to usher you into a premature food coma while at the table.&nbsp;</p>
+
+
+<div class="gb-container gb-container-5e7f7277 alignwide"><div class="gb-inside-container">
+
+<p><strong>Learn More</strong>&nbsp;</p>
+
+
+
+<p>Check out our list of&nbsp;7 Cities for Foodies&nbsp;&nbsp;</p>
+
+</div></div>
+
+
+<p></p>
+
+
+
+<h2 class="wp-block-heading" id="green-book-global-s-black-travel-data-and-tech">Green Book Global&#8217;s Black Travel Data and Tech</h2>
+
+
+
+<p>We have created a tool that can help travelers find destinations based on their own input criteria.&nbsp; Find destinations that have a low threat of racism but also have the perfect mix of Romance, Affordability, and Adventure.&nbsp;</p>
+
+
+<div class="gb-container gb-container-552340a8 alignwide"><div class="gb-inside-container">
+
+<p><strong>Looking for more Black Travel Resources?</strong>&nbsp;</p>
+
+
+
+<p>Check it out.  <strong>Find Black-Friendly destinations</strong> using our Destination Travel Filter for free by <a href="https://greenbookglobal.com/register/">clicking here and signing up for a free account</a>. No credit card is required.    </p>
+
+
+
+<p><strong><a href="https://greenbookglobal.com/search/?adventureScore=2,5&amp;affordabilityScore=4,5&amp;continents=northAmerica&amp;historyScore=2,5&amp;localFoodScore=4,5&amp;nightlifeScore=2,5&amp;order=reviews,desc&amp;overallScore=2,5&amp;relaxationScore=3,5&amp;romanceScore=2,5&amp;subOpened=true&amp;thingsToDoScore=2,4.5&amp;travelingWhileBlackScore=4.5,5">FIND BLACK FRIENDLY DESTINATIONS </a></strong></p>
+
+</div></div>
+
+
+<p></p>
+
+</div></div>		</div>
+
+		<div class="gb-container gb-container-ef7545ed"><div class="gb-inside-container">
+<div class="gb-grid-wrapper gb-grid-wrapper-d0eb65d5">
+<div class="gb-grid-column gb-grid-column-639f433c"><div class="gb-container gb-container-639f433c"><div class="gb-inside-container">
+
+</div></div></div>
+
+<div class="gb-grid-column gb-grid-column-42c801e1"><div class="gb-container gb-container-42c801e1"><div class="gb-inside-container">
+
+<p class="gb-headline gb-headline-7b3c8a97 gb-headline-text "><a href="https://greenbookglobal.com/travel-the-world/author/larry_naomi/">Lawrence Phillips</a></p>
+
+
+<div class="dynamic-author-description">Lawrence Phillips is a Diversity Equity and Inclusion consultant and the founder of Green Book Global, a travel review platform dedicated to inspiring and empowering black travelers to confidently explore the world.  It was formed when Lawrence embarked on a 30 country, 7-continent adventure around the world and noticed there was no consistent resource that could provide destination insights on racism.</div>
+</div></div></div>
+</div>
+</div></div>
+
+
+<p></p>
+		<footer class="entry-meta" aria-label="Entry meta">
+					<nav id="nav-below" class="post-navigation" aria-label="Posts">
+			<div class="nav-previous"><span class="gp-icon icon-arrow-left"><svg viewBox="0 0 192 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M178.425 138.212c0 2.265-1.133 4.813-2.832 6.512L64.276 256.001l111.317 111.277c1.7 1.7 2.832 4.247 2.832 6.513 0 2.265-1.133 4.813-2.832 6.512L161.43 394.46c-1.7 1.7-4.249 2.832-6.514 2.832-2.266 0-4.816-1.133-6.515-2.832L16.407 262.514c-1.699-1.7-2.832-4.248-2.832-6.513 0-2.265 1.133-4.813 2.832-6.512l131.994-131.947c1.7-1.699 4.249-2.831 6.515-2.831 2.265 0 4.815 1.132 6.514 2.831l14.163 14.157c1.7 1.7 2.832 3.965 2.832 6.513z" fill-rule="nonzero" /></svg></span><span class="prev"><a href="https://greenbookglobal.com/travel-the-world/fun-things-to-do-in-greensboro-north-carolina/" rel="prev">Fun Things to do in Greensboro North Carolina</a></span></div><div class="nav-next"><span class="gp-icon icon-arrow-right"><svg viewBox="0 0 192 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M178.425 256.001c0 2.266-1.133 4.815-2.832 6.515L43.599 394.509c-1.7 1.7-4.248 2.833-6.514 2.833s-4.816-1.133-6.515-2.833l-14.163-14.162c-1.699-1.7-2.832-3.966-2.832-6.515 0-2.266 1.133-4.815 2.832-6.515l111.317-111.316L16.407 144.685c-1.699-1.7-2.832-4.249-2.832-6.515s1.133-4.815 2.832-6.515l14.163-14.162c1.7-1.7 4.249-2.833 6.515-2.833s4.815 1.133 6.514 2.833l131.994 131.993c1.7 1.7 2.832 4.249 2.832 6.515z" fill-rule="nonzero" /></svg></span><span class="next"><a href="https://greenbookglobal.com/travel-the-world/nuances-of-traveling-while-black/" rel="next">Traveling While Black &#8211; 5 Cultural Nuances of Black Travel</a></span></div>		</nav>
+				</footer>
+			</div>
+</article>
+
+			<div class="comments-area">
+				<div id="comments">
+
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Comment</h3><p class="must-log-in">You must be <a href="https://greenbookglobal.com/travel-the-world/wp-login.php?redirect_to=https%3A%2F%2Fgreenbookglobal.com%2Ftravel-the-world%2Fultimate-guide-to-black-travel%2F">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+	
+</div><!-- #comments -->
+			</div>
+
+					</main>
+	</div>
+
+	
+	</div>
+</div>
+
+
+<div class="site-footer">
+	<div class="gb-container gb-container-1ef25c5a"><div class="gb-inside-container">
+<div class="gb-grid-wrapper gb-grid-wrapper-89056a31">
+<div class="gb-grid-column gb-grid-column-6c3a1c15"><div class="gb-container gb-container-6c3a1c15"><div class="gb-inside-container">
+
+<figure class="wp-block-image size-full is-resized"><img decoding="async" width="420" height="304" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Green Book International" class="wp-image-4689 ewww_webp" style="width:230px;height:167px"  sizes="(max-width: 420px) 100vw, 420px" data-src-img="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International.png" data-src-webp="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International.png.webp" data-srcset-webp="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International.png.webp 420w, https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-300x217.png.webp 300w" data-srcset-img="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International.png 420w, https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-300x217.png 300w" data-eio="j" /><noscript><img decoding="async" width="420" height="304" src="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International.png" alt="Green Book International" class="wp-image-4689" style="width:230px;height:167px" srcset="https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International.png 420w, https://greenbookglobal.com/travel-the-world/wp-content/uploads/2021/06/Green-Book-International-300x217.png 300w" sizes="(max-width: 420px) 100vw, 420px" /></noscript></figure>
+
+</div></div></div>
+
+<div class="gb-grid-column gb-grid-column-e4f0b062"><div class="gb-container gb-container-e4f0b062"><div class="gb-inside-container">
+
+<p class="gb-headline gb-headline-dd1ded3e gb-headline-text">menu</p>
+
+
+
+<p class="gb-headline gb-headline-d4deedee gb-headline-text"><a href="https://greenbookglobal.com/travel-the-world/">Home</a></p>
+
+
+
+<p class="gb-headline gb-headline-729de3c9 gb-headline-text"><a href="https://greenbookglobal.com/travel-the-world/black-travel-guide/" target="_blank" rel="noreferrer noopener">Travel Guide</a></p>
+
+
+
+<p class="gb-headline gb-headline-8f70ba1d gb-headline-text"><a href="https://greenbookglobal.com/travel-the-world/blog/">Explore</a></p>
+
+
+
+<p class="gb-headline gb-headline-bfac29ec gb-headline-text"><a href="https://greenbookglobal.com/" data-type="page">Book Trip</a></p>
+
+
+
+<p class="gb-headline gb-headline-63d9f9f2 gb-headline-text"><a href="https://greenbookglobal.com/travel-the-world/contact/" data-type="page">Contact</a></p>
+
+
+
+<p class="gb-headline gb-headline-31d28084 gb-headline-text"><a href="https://greenbookglobal.com/travel-the-world/subscribe/">Subscribe</a></p>
+
+</div></div></div>
+
+<div class="gb-grid-column gb-grid-column-a261fa04"><div class="gb-container gb-container-a261fa04"><div class="gb-inside-container">
+<div class="gb-button-wrapper gb-button-wrapper-9db70a0e">
+
+<a class="gb-button gb-button-4a9605a8" href="https://www.instagram.com/greenbookglobal/?hl=en" target="_blank" rel="noopener noreferrer"><span class="gb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1em" height="1em" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" fill="currentColor"></path></svg></span></a>
+
+
+
+<a class="gb-button gb-button-aaba9764" href="https://twitter.com/greenbookglobal" target="_blank" rel="noopener noreferrer"><span class="gb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" aria-hidden="true"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" fill="currentColor"></path></svg></span></a>
+
+
+
+<a class="gb-button gb-button-6c4b393d" href="https://www.linkedin.com/company/green-book-global/" target="_blank" rel="noopener noreferrer"><span class="gb-icon"><svg aria-hidden="true" role="img" height="1em" width="1em" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></span></a>
+
+
+
+<a class="gb-button gb-button-ed15d177" href="https://www.facebook.com/greenbookglobal/" target="_blank" rel="noopener noreferrer"><span class="gb-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="1em" height="1em" aria-hidden="true"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" fill="currentColor"></path></svg></span></a>
+
+</div>
+</div></div></div>
+</div>
+
+<div class="gb-container gb-container-99af9301"><div class="gb-inside-container">
+<div class="gb-grid-wrapper gb-grid-wrapper-c04d9032">
+<div class="gb-grid-column gb-grid-column-f1168fc8"><div class="gb-container gb-container-f1168fc8"><div class="gb-inside-container">
+
+<p class="gb-headline gb-headline-156ef4d7 gb-headline-text">© 2021 Green Book Global</p>
+
+</div></div></div>
+
+<div class="gb-grid-column gb-grid-column-4dc7c6a0"><div class="gb-container gb-container-4dc7c6a0"><div class="gb-inside-container">
+
+<p class="gb-headline gb-headline-39d67d3e gb-headline-text"><a href="https://greenbookglobal.com/travel-the-world/privacy-policy/" data-type="URL" data-id="https://greenbookglobal.com/travel-the-world/privacy-policy/" target="_blank" rel="noreferrer noopener">Privacy Policy</a> | <a href="#">Terms Of Service</a></p>
+
+</div></div></div>
+</div>
+</div></div>
+</div></div></div>
+
+		<nav id="generate-slideout-menu" class="main-navigation slideout-navigation do-overlay" itemtype="https://schema.org/SiteNavigationElement" itemscope>
+			<div class="inside-navigation grid-container grid-parent">
+				<button class="slideout-exit has-svg-icon"><span class="gp-icon pro-close">
+				<svg viewBox="0 0 512 512" aria-hidden="true" role="img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em">
+					<path d="M71.029 71.029c9.373-9.372 24.569-9.372 33.942 0L256 222.059l151.029-151.03c9.373-9.372 24.569-9.372 33.942 0 9.372 9.373 9.372 24.569 0 33.942L289.941 256l151.03 151.029c9.372 9.373 9.372 24.569 0 33.942-9.373 9.372-24.569 9.372-33.942 0L256 289.941l-151.029 151.03c-9.373 9.372-24.569 9.372-33.942 0-9.372-9.373-9.372-24.569 0-33.942L222.059 256 71.029 104.971c-9.372-9.373-9.372-24.569 0-33.942z" />
+				</svg>
+			</span> <span class="screen-reader-text">Close</span></button><div class="main-nav"><ul id="menu-main-menu-1" class=" slideout-menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5225"><a href="https://greenbookglobal.com">Home</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-6072"><a href="https://greenbookglobal.com">Black Travel<span role="presentation" class="dropdown-menu-toggle"><span class="gp-icon icon-arrow"><svg viewBox="0 0 330 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M305.913 197.085c0 2.266-1.133 4.815-2.833 6.514L171.087 335.593c-1.7 1.7-4.249 2.832-6.515 2.832s-4.815-1.133-6.515-2.832L26.064 203.599c-1.7-1.7-2.832-4.248-2.832-6.514s1.132-4.816 2.832-6.515l14.162-14.163c1.7-1.699 3.966-2.832 6.515-2.832 2.266 0 4.815 1.133 6.515 2.832l111.316 111.317 111.316-111.317c1.7-1.699 4.249-2.832 6.515-2.832s4.815 1.133 6.515 2.832l14.162 14.163c1.7 1.7 2.833 4.249 2.833 6.515z" /></svg></span></span></a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6070"><a href="https://greenbookglobal.com">Black Travel Tips</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-6071"><a href="https://greenbookglobal.com/travel-the-world/ultimate-guide-to-black-travel/" aria-current="page">Black Travel Guide</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4459"><a href="https://greenbookglobal.com/book-trip/">Book Trip</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6279"><a href="https://greenbookglobal.com/travel-the-world/category/sundown-towns/">Sundown Towns</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-has-children menu-item-3570"><a href="https://greenbookglobal.com/travel-the-world/blog/">Explore<span role="presentation" class="dropdown-menu-toggle"><span class="gp-icon icon-arrow"><svg viewBox="0 0 330 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"><path d="M305.913 197.085c0 2.266-1.133 4.815-2.833 6.514L171.087 335.593c-1.7 1.7-4.249 2.832-6.515 2.832s-4.815-1.133-6.515-2.832L26.064 203.599c-1.7-1.7-2.832-4.248-2.832-6.514s1.132-4.816 2.832-6.515l14.162-14.163c1.7-1.699 3.966-2.832 6.515-2.832 2.266 0 4.815 1.133 6.515 2.832l111.316 111.317 111.316-111.317c1.7-1.699 4.249-2.832 6.515-2.832s4.815 1.133 6.515 2.832l14.162 14.163c1.7 1.7 2.833 4.249 2.833 6.515z" /></svg></span></span></a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-4803"><a href="https://greenbookglobal.com/travel-the-world/category/travel-guides/">Travel Guides</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4804"><a href="https://greenbookglobal.com/travel-the-world/category/black-owned/">Black-Owned</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4805"><a href="https://greenbookglobal.com/travel-the-world/category/locations/">Locations</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4807"><a href="https://greenbookglobal.com/travel-the-world/category/adventure/">Adventure</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4806"><a href="https://greenbookglobal.com/travel-the-world/category/food/">Food</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5085"><a href="https://greenbookglobal.com/travel-the-world/category/all-posts/">All Posts</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4781"><a href="https://greenbookglobal.com/travel-the-world/contact/">Our Story</a></li>
+<li class="nav-button menu-item menu-item-type-post_type menu-item-object-page menu-item-3574"><a href="https://greenbookglobal.com/travel-the-world/subscribe/">Subscribe</a></li>
+</ul></div>			</div><!-- .inside-navigation -->
+		</nav><!-- #site-navigation -->
+
+		            <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/travel-the-world/*"},{"not":{"href_matches":["/travel-the-world/wp-*.php","/travel-the-world/wp-admin/*","/travel-the-world/wp-content/uploads/*","/travel-the-world/wp-content/*","/travel-the-world/wp-content/plugins/*","/travel-the-world/wp-content/themes/generatepress/*","/travel-the-world/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script type="rocketlazyloadscript" id="generate-a11y">!function(){"use strict";if("querySelector"in document&&"addEventListener"in window){var e=document.body;e.addEventListener("mousedown",function(){e.classList.add("using-mouse")}),e.addEventListener("keydown",function(){e.classList.remove("using-mouse")})}}();</script><script id="generate-offside-js-extra">
+var offSide = {"side":"left"};
+//# sourceURL=generate-offside-js-extra
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-content/plugins/gp-premium/menu-plus/functions/js/offside.min.js?ver=2.4.0" id="generate-offside-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-content/cache/min/1/travel-the-world/wp-content/plugins/gpt3-ai-content-generator/public/js/wpaicg-form-shortcode.js?ver=1768027830" id="wpaicg-gpt-form-js" defer></script>
+<script id="wpaicg-init-js-extra">
+var wpaicgParams = {"ajax_url":"https://greenbookglobal.com/travel-the-world/wp-admin/admin-ajax.php","search_nonce":"6cc62de95e","logged_in":"0","languages":{"source":"Sources","no_result":"No result found","wrong":"Something went wrong","prompt_strength":"Please enter a valid prompt strength value between 0 and 1.","num_inference_steps":"Please enter a valid number of inference steps value between 1 and 500.","guidance_scale":"Please enter a valid guidance scale value between 1 and 20.","error_image":"Please select least one image for generate","save_image_success":"Save images to media successfully","select_all":"Select All","unselect":"Unselect","select_save_error":"Please select least one image to save","alternative":"Alternative Text","title":"Title","edit_image":"Edit Image","caption":"Caption","description":"Description","save":"Save","removed_pdf":"Your pdf session is cleared"}};
+//# sourceURL=wpaicg-init-js-extra
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-content/cache/min/1/travel-the-world/wp-content/plugins/gpt3-ai-content-generator/public/js/wpaicg-init.js?ver=1768027830" id="wpaicg-init-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-content/cache/min/1/travel-the-world/wp-content/plugins/gpt3-ai-content-generator/public/js/wpaicg-chat.js?ver=1768027830" id="wpaicg-chat-script-js" defer></script>
+<script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"/travel-the-world(/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index\\.php/)?(.*)wp\\-json(/.*|$))|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://greenbookglobal.com/travel-the-world","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+</script>
+<script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+</script>
+<script id="generate-menu-js-extra">
+var generatepressMenu = {"toggleOpenedSubMenus":"1","openSubMenuLabel":"Open Sub-Menu","closeSubMenuLabel":"Close Sub-Menu"};
+//# sourceURL=generate-menu-js-extra
+</script>
+<script type="rocketlazyloadscript" data-rocket-src="https://greenbookglobal.com/travel-the-world/wp-content/themes/generatepress/assets/js/menu.min.js?ver=3.4.0" id="generate-menu-js" defer></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://greenbookglobal.com/travel-the-world/wp-includes/js/wp-emoji-release.min.js?ver=6.9"}}
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://greenbookglobal.com/travel-the-world/wp-includes/js/wp-emoji-loader.min.js
+</script>
+
+<script type="rocketlazyloadscript">window.addEventListener('DOMContentLoaded', function() {
+	jQuery(document).ready(function() {
+		
+		setTimeout(function() {
+			jQuery.ajax({
+				url: "https://greenbookglobal.com/travel-the-world/wp-admin/admin-ajax.php",
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					action: 'get_popup_data'
+				},
+				success: function (response) {
+					if (response.success) {
+						jQuery(".innerModileAdsSection").html('');
+						jQuery(".innerModileAdsSection").append(response.data);
+					} else {
+						console.error('API Error:', response);
+					}
+				},
+				error: function (xhr) {
+					console.error('AJAX Error:', xhr.responseText);
+				}
+			});
+		}, 10000);
+		
+		jQuery("body").on("click", ".closeBtn", function(){
+			jQuery(".innerModileAdsSection").hide();
+		});
+		
+	});
+});</script>
+
+<script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1768030390 -->
