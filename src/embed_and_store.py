@@ -42,7 +42,18 @@ def main():
     print(f"Loading chunks from {chunks_path}...")
     chunks = load_chunks(str(chunks_path))
     texts = [r.get("text", "") for r in chunks]
-    ids = [r.get("id") or str(i) for i, r in enumerate(chunks)]
+    # Ensure IDs are unique (Chroma requires unique ids). If a chunk id
+    # duplicates, append the chunk index to make it unique while preserving
+    # the original id as part of the identifier.
+    ids = []
+    seen = set()
+    for i, r in enumerate(chunks):
+        base_id = r.get("id") or str(i)
+        uid = base_id
+        if uid in seen:
+            uid = f"{base_id}-{i}"
+        ids.append(uid)
+        seen.add(uid)
     metadatas = []
     for r in chunks:
         md = {
@@ -77,7 +88,9 @@ def main():
     persist_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"Creating Chroma client with persistent dir: {persist_dir}")
-    client = chromadb.Client(Settings(chroma_db_impl="duckdb+parquet", persist_directory=str(persist_dir)))
+    # Use the current Chroma client configuration: set persistence explicitly.
+    settings = Settings(is_persistent=True, persist_directory=str(persist_dir))
+    client = chromadb.Client(settings=settings)
 
     coll = client.get_or_create_collection(name=args.collection)
 
