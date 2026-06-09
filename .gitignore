@@ -1,5 +1,6 @@
 # API keys — never commit these
 .env
+.env.*
 
 # Python
 __pycache__/
@@ -15,6 +16,7 @@ env/
 # ChromaDB local storage
 chroma_db/
 chroma/
+db/chroma/
 
 # macOS
 .DS_Store

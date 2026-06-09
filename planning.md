@@ -54,11 +54,11 @@ This knowledge is valuable because the best guidance is split across university 
 
 ## Evaluation Plan
 
-| # | Question | Expected answer |
-|---|----------|-----------------|
-| 1 | According to the Gilman program website, what is the full program name and which U.S. government office funds it? | Benjamin A. Gilman International Scholarship Program; funded by the U.S. Department of State's Bureau of Educational and Cultural Affairs. |
-| 2 | Which specific HBCUs are explicitly listed on the HBCU Lifestyle page as having established international exchange programs? (List the institutions named.) | Howard University; Morehouse College; Spelman College. |
-| 3 | List two concrete safety recommendations given by The HBCU Career Center's "Stay Safe Abroad" guidance. (Provide the exact practices.) | Examples: "Be alert"; "Make and secure copies of your important papers." |
+| # | Question | Expected answer | Actual Response | Accuracy Judgement |
+|---|----------|-----------------|---------------|------------------|
+| 1 | According to the Gilman program website, what is the full program name and which U.S. government office funds it? | Benjamin A. Gilman International Scholarship Program; funded by the U.S. Department of State's Bureau of Educational and Cultural Affairs. | The full program name is the Benjamin A. [1] Gilman International Scholarship Program [3], and it is funded by the U.S. Government, with the U.S. [3] Department of State's Bureau of Educational and Cultural Affairs being the specific office involved [1] [3] [5].| Accurate|
+| 2 | Which specific HBCUs are explicitly listed on the HBCU Lifestyle page as having established international exchange programs? (List the institutions named.) | Howard University; Morehouse College; Spelman College. |The specific HBCUs explicitly listed as having established international exchange programs are Howard University, Morehouse College, and Spelman College [2].| Accurate |
+| 3 | List two concrete safety recommendations given by The HBCU Career Center's "Stay Safe Abroad" guidance. (Provide the exact practices.) | Examples: "Be alert"; "Make and secure copies of your important papers." | 
 | 4 | What filtering criteria does Green Book Global's destination tool provide? (Name at least two criteria used by the tool.) | Examples: "travelingWhileBlackScore"/threat-of-racism metric and filters for affordability, adventure, romance, and local-food scores. |
 | 5 | According to the Melanin Base Camp article, name two recommended hair or skin care strategies travelers should prepare before departure. | Examples: protective styles (e.g., knotless braids) and packing moisturizers/oils and non-whitening sunscreen. |
 
@@ -91,3 +91,5 @@ flowchart LR
 **Milestone 4 - Embedding and retrieval:** I will use Copilot or Claude with the Retrieval Approach section and the evaluation questions. I expect it to wire up sentence-transformers and ChromaDB, persist embeddings, and return the best matching chunks for a query. I will verify retrieval by running the five test questions and checking that the top chunks actually support the answer.
 
 **Milestone 5 - Generation and interface:** I will use Copilot with the Architecture, Retrieval Approach, and document source list to build the Groq-backed answer generation and the query interface. I expect it to produce a response layer that cites sources, stays within retrieved evidence, and a simple UI for asking questions. I will verify that the system refuses or hedges when retrieval does not support an answer and that the cited sources match the retrieved chunks.
+
+
